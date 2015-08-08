@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/face"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="8dp"
+            app:roundAsCircle="true"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Body1"
+            tool:text="Jude"
+            android:layout_toRightOf="@+id/face"/>
+
+        <TextView
+            android:id="@+id/post_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tool:text="明天 18::20"
+            android:gravity="bottom"
+            android:layout_toRightOf="@+id/face"
+            android:layout_alignBottom="@+id/face"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/face"
+            android:layout_marginTop="8dp"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            tool:text="倒数日 Days Matter 这款应用"/>
+
+        <ImageView
+            android:id="@+id/ic_date"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_time_small"
+            android:layout_below="@+id/title"
+            android:layout_marginTop="8dp"
+            />
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:gravity="center_vertical"
+            tool:text="8月13日 16:30"
+            android:layout_toRightOf="@+id/ic_date"
+            android:layout_alignTop="@+id/ic_date"
+            android:layout_alignBottom="@+id/ic_date"
+            android:layout_marginLeft="8dp"
+            />
+
+
+        <ImageView
+            android:id="@+id/ic_address"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_address_small"
+            android:layout_below="@+id/ic_date"
+            android:layout_marginTop="8dp"
+            />
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tool:text="创业要豁出去，后路是留给懦夫的"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/ic_date"
+            android:layout_alignTop="@+id/ic_address"
+            android:layout_alignBottom="@+id/ic_address"
+            android:layout_marginLeft="8dp"
+            />
+
+        <ImageView
+            android:id="@+id/ic_cost"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_money_small"
+            android:layout_below="@+id/ic_address"
+            android:layout_marginTop="8dp"
+            />
+        <TextView
+            android:id="@+id/cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tool:text="AA制"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/ic_cost"
+            android:layout_alignTop="@+id/ic_cost"
+            android:layout_alignBottom="@+id/ic_cost"
+            android:layout_marginLeft="8dp"
+            />
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/ic_cost"
+            android:background="@android:color/darker_gray"/>
+        <ImageView
+            android:id="@+id/ic_person"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_persons_small"
+            android:layout_below="@+id/divider"
+            />
+        <TextView
+            android:id="@+id/member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tool:text="8人"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/ic_person"
+            android:layout_alignTop="@+id/ic_person"
+            android:layout_alignBottom="@+id/ic_person"
+            android:layout_marginLeft="8dp"
+            />
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tool:text="10"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/divider"
+            android:layout_marginLeft="4dp"
+            />
+        <ImageView
+            android:id="@+id/ic_comment"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_toLeftOf="@id/comment"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_comment_small"
+            android:layout_below="@+id/divider"
+            />
+
+        <TextView
+            android:id="@+id/praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tool:text="10"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@+id/ic_comment"
+            android:layout_below="@+id/divider"
+            android:layout_marginLeft="4dp"
+            />
+        <ImageView
+            android:id="@+id/ic_praise"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_toLeftOf="@id/praise"
+            android:src="@drawable/ic_praise_black"
+            android:layout_below="@+id/divider"
+            />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
