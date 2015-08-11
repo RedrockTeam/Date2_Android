@@ -23,7 +23,7 @@ public class DateListPresenter extends Presenter<DateListFragment> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        type = getView().getArguments().getInt("type");
+        type = getView().getArguments().getInt("id");
         refresh();
         if(type == 0){
             DateModel.getInstance().getBanner(new DataCallback<Banner[]>() {

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -41,12 +42,25 @@ public class UserFragment extends NucleusFragment<UserPresenter> {
     LinearLayout viewContact;
     @InjectView(R.id.name)
     TextView name;
+    @InjectView(R.id.container)
+    RelativeLayout container;
+    @InjectView(R.id.view_attention)
+    LinearLayout viewAttention;
+    @InjectView(R.id.view_fans)
+    LinearLayout viewFans;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.user_fragment, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup c, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.user_fragment, c, false);
         ButterKnife.inject(this, view);
+        container.setOnClickListener(v -> getPresenter().startUserDetail());
+        viewAttention.setOnClickListener(v -> getPresenter().startAttention());
+        viewFans.setOnClickListener(v -> getPresenter().startFans());
+        viewRecord.setOnClickListener(v -> getPresenter().startJoinDate());
+        viewCollection.setOnClickListener(v -> getPresenter().startCollection());
+        viewContact.setOnClickListener(v->getPresenter().startContact());
+        viewCertification.setOnClickListener(v->getPresenter().startCertification());
         return view;
     }
 

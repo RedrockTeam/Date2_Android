@@ -55,7 +55,7 @@
             />
         <TextView
             android:id="@+id/date"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Caption"
             android:gravity="center_vertical"
@@ -93,7 +93,8 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:src="@drawable/ic_money_small"
-            android:layout_below="@+id/ic_address"
+            android:layout_below="@+id/title"
+            android:layout_toRightOf="@+id/date"
             android:layout_marginTop="8dp"
             />
         <TextView
@@ -114,7 +115,7 @@
             android:layout_height="0.5dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_below="@id/ic_cost"
+            android:layout_below="@id/ic_address"
             android:background="@android:color/darker_gray"/>
         <ImageView
             android:id="@+id/ic_person"

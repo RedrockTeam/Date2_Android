@@ -5,6 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/orange</item>
         <item name="colorPrimary">@color/blackDeep</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
     <style name="AppTheme" parent="AppTheme.Base"></style>
 
@@ -13,4 +14,5 @@
         <item name="colorAccent">@color/orange</item>
         <item name="colorPrimary">@color/blackDeep</item>
     </style>
+
 </resources>

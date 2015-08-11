@@ -16,7 +16,6 @@ import com.jude.beam.nucleus.factory.RequiresPresenter;
 import com.jude.beam.nucleus.view.NucleusFragment;
 import com.redrock.date2.R;
 import com.redrock.date2.model.DateModel;
-import com.redrock.date2.model.bean.Banner;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -42,6 +41,10 @@ public class DateFragment extends NucleusFragment<DatePresenter> {
         return rootView;
     }
 
+    public void showMain(){
+        if (vpDate!=null)
+            vpDate.setCurrentItem(0);
+    }
 
     public void setAdapter(PagerAdapter adapter){
         vpDate.setAdapter(adapter);
@@ -65,19 +68,21 @@ public class DateFragment extends NucleusFragment<DatePresenter> {
         public Fragment getItem(int position) {
             Fragment f =  new DateListFragment();
             Bundle b = new Bundle();
-            b.putInt("type",position);
+            if (position == 0)b.putInt("id",0);
+            else b.putInt("id",DateModel.getInstance().getDateType()[position-1].getId());
             f.setArguments(b);
             return f;
         }
 
         @Override
         public int getCount() {
-            return DateModel.getInstance().getDateType().length;
+            return DateModel.getInstance().getDateType().length+1;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return DateModel.getInstance().getDateType()[position].getName();
+            if (position == 0)return "热门";
+            else return DateModel.getInstance().getDateType()[position-1].getName();
         }
     }
 }

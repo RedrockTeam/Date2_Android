@@ -2,6 +2,7 @@ package com.redrock.date2.app;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,6 +11,7 @@ import com.jude.beam.nucleus.manager.Presenter;
 import com.jude.beam.nucleus.view.NucleusAppCompatActivity;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.redrock.date2.R;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * Created by Mr.Jude on 2015/8/7.
@@ -57,7 +59,14 @@ public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<
         setToolBar(true);
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -83,5 +92,12 @@ public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<
         dialog.dismiss();
     }
 
-
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

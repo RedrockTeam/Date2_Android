@@ -63,7 +63,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/post"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -71,13 +70,14 @@
             android:gravity="center_horizontal">
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floating_action_button"
+                android:id="@+id/post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_add"
                 android:layout_marginTop="6dp"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
+                app:elevation="2dp"
                 />
 
         </LinearLayout>

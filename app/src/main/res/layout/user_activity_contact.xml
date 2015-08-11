@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/include_toolbar"></include>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_phone"
+            android:padding="8dp"
+            android:layout_marginLeft="16dp"
+            />
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="手机号"/>
+
+        <TextView
+            android:id="@+id/status_phone"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:text="绑定"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:background="?colorAccent"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_wechat"
+            android:padding="8dp"
+            android:layout_marginLeft="16dp"
+            />
+        <TextView
+            android:id="@+id/tv_wechat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="微信账号"/>
+
+        <TextView
+            android:id="@+id/status_wechat"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:text="绑定"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:background="?colorAccent"/>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_qq"
+            android:padding="8dp"
+            android:layout_marginLeft="16dp"
+            />
+        <TextView
+            android:id="@+id/tv_qq"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="QQ账号"/>
+
+        <TextView
+            android:id="@+id/status_qq"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:text="绑定"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:background="?colorAccent"/>
+
+    </LinearLayout>
+
+</LinearLayout>

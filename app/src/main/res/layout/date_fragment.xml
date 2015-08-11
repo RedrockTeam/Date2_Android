@@ -11,7 +11,6 @@
         android:layout_height="48dp"
         app:pstsIndicatorHeight="2dp"
         app:pstsIndicatorColor="?colorAccent"
-        app:pstsDividerPadding="4dp"
         app:pstsDividerColor="#0000"
         />
 

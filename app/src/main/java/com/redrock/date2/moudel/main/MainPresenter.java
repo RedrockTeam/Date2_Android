@@ -1,10 +1,11 @@
 package com.redrock.date2.moudel.main;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 
 import com.jude.beam.nucleus.manager.Presenter;
 import com.redrock.date2.moudel.action.ActionFragment;
 import com.redrock.date2.moudel.date.DateFragment;
+import com.redrock.date2.moudel.date.WriteDateActivity;
 import com.redrock.date2.moudel.message.MessageFragment;
 import com.redrock.date2.moudel.user.UserFragment;
 
@@ -12,10 +13,10 @@ import com.redrock.date2.moudel.user.UserFragment;
  * Created by Mr.Jude on 2015/8/7.
  */
 public class MainPresenter extends Presenter<MainActivity> {
-    private Fragment mDateFragment;
-    private Fragment mActionFragment;
-    private Fragment mMessageFragment;
-    private Fragment mUserFragment;
+    private DateFragment mDateFragment;
+    private ActionFragment mActionFragment;
+    private MessageFragment mMessageFragment;
+    private UserFragment mUserFragment;
 
     @Override
     protected void onCreateView(MainActivity view) {
@@ -26,6 +27,8 @@ public class MainPresenter extends Presenter<MainActivity> {
     public void showDateFragment(){
         if (mDateFragment==null){
             mDateFragment = new DateFragment();
+        }else{
+            mDateFragment.showMain();
         }
         getView().showFragment(mDateFragment);
     }
@@ -47,7 +50,9 @@ public class MainPresenter extends Presenter<MainActivity> {
         }
         getView().showFragment(mUserFragment);
     }
-    public void startPost(){
-
+    public void startPost(int typeId){
+        Intent i = new Intent(getView(), WriteDateActivity.class);
+        i.putExtra("id",typeId);
+        getView().startActivity(i);
     }
 }
