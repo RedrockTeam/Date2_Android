@@ -26,7 +26,7 @@ public class UpdateLogActivity extends BaseActivity<UpdateLogPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_activity_updatelog);
         ButterKnife.inject(this);
-        RequestManager.getInstance().get("", new RequestListener() {
+        RequestManager.getInstance().get("https://raw.githubusercontent.com/RedrockTeam/Date2_Android/master/updateLog.txt", new RequestListener() {
             @Override
             public void onRequest() {
 
