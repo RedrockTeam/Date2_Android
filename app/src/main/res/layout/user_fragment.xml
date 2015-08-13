@@ -24,7 +24,6 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:overlayImage="@drawable/ic_person"
             app:roundAsCircle="true"/>
         <TextView
             android:id="@+id/name"
@@ -49,8 +48,8 @@
 
         <ImageView
             android:id="@+id/head_arrows"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:src="@drawable/ic_arrows_right"
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
@@ -86,6 +85,7 @@
                 android:id="@+id/attention"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="0"
                 style="@style/TextAppearance.AppCompat.Body1"
                 tool:text="400"/>
             <TextView
@@ -111,6 +111,7 @@
                 android:id="@+id/fans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="0"
                 style="@style/TextAppearance.AppCompat.Body1"
                 tool:text="400"/>
             <TextView
@@ -145,8 +146,8 @@
             android:text="我的收藏"
             android:layout_margin="16dp"/>
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:src="@drawable/ic_arrows_right"
             android:layout_marginRight="16dp"
             />
@@ -167,8 +168,8 @@
             android:text="约会记录"
             android:layout_margin="16dp"/>
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:src="@drawable/ic_arrows_right"
             android:layout_marginRight="16dp"
             />
@@ -198,8 +199,8 @@
             android:text="实名认证"
             android:layout_margin="16dp"/>
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:src="@drawable/ic_arrows_right"
             android:layout_marginRight="16dp"
             />
@@ -229,8 +230,8 @@
             android:text="联系方式"
             android:layout_margin="16dp"/>
         <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:src="@drawable/ic_arrows_right"
             android:layout_marginRight="16dp"
             />

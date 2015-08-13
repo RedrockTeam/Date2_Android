@@ -5,7 +5,10 @@
         <!-- Customize your theme here. -->
         <item name="colorAccent">@color/orange</item>
         <item name="colorPrimary">@color/black_deep</item>
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
+
     <style name="AppTheme" parent="AppTheme.Base"></style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -13,6 +16,7 @@
         <item name="colorAccent">@color/orange</item>
         <item name="colorPrimary">@color/black_deep</item>
     </style>
+
     <style name="TransTheme" parent="AppTheme">
         <!--窗体透明-->
         <item name="android:windowIsTranslucent">true</item>
@@ -20,5 +24,7 @@
 
     <style name="LaunchTheme" parent="Theme.AppCompat.NoActionBar">
     </style>
-
+    <style name="MainTheme" parent="AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
 </resources>

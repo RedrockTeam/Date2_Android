@@ -1,9 +1,13 @@
 package com.redrock.date2.moudel.user;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -13,8 +17,10 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.beam.nucleus.factory.RequiresPresenter;
 import com.jude.beam.nucleus.view.NucleusFragment;
+import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.model.bean.User;
+import com.redrock.date2.moudel.setting.SettingActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -53,6 +59,7 @@ public class UserFragment extends NucleusFragment<UserPresenter> {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup c, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.user_fragment, c, false);
+        setHasOptionsMenu(true);
         ButterKnife.inject(this, view);
         container.setOnClickListener(v -> getPresenter().startUserDetail());
         viewAttention.setOnClickListener(v -> getPresenter().startAttention());
@@ -62,6 +69,19 @@ public class UserFragment extends NucleusFragment<UserPresenter> {
         viewContact.setOnClickListener(v->getPresenter().startContact());
         viewCertification.setOnClickListener(v->getPresenter().startCertification());
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_setting, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.setting){
+            startActivity(new Intent(getActivity(), SettingActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -79,7 +99,11 @@ public class UserFragment extends NucleusFragment<UserPresenter> {
             attention.setText(user.getAttentionCount());
             fans.setText(user.getFansCount());
         }else{
+            face.setImageURI(JUtils.getUriFromRes(R.drawable.ic_person));
             name.setText("点击登录");
+            sign.setText("");
+            attention.setText("0");
+            fans.setText("0");
         }
     }
 }

@@ -5,6 +5,7 @@ import android.os.Handler;
 
 import com.jude.beam.model.AbsModel;
 import com.jude.utils.JFileManager;
+import com.jude.utils.JUtils;
 import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.bean.UserDetail;
@@ -41,10 +42,38 @@ public class UserModel extends AbsModel{
     }
 
     public void setAccount(User user){
+        JUtils.Log("Login in");
         account = user;
-        JFileManager.getInstance().getFolder(Dir.Object).writeObjectToFile(user,ACCOUNT_FILE);
+        if (user != null)
+            JFileManager.getInstance().getFolder(Dir.Object).writeObjectToFile(user,ACCOUNT_FILE);
+        else
+            JFileManager.getInstance().getFolder(Dir.Object).deleteChild(ACCOUNT_FILE);
+
+        //一定要在最后
         mUserBehaviorSubject.onNext(user);
     }
+
+    public void login(String number,String password,DataCallback<User> callback){
+        callback.add(new DataCallback<User>() {
+            @Override
+            public void success(String info, User data) {
+                setAccount(data);
+            }
+        });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                callback.success("", createVirtualUser());
+                //TODO 临时处理callback不能链式调用的问题
+               setAccount( createVirtualUser());
+            }
+        }, 1000);
+    }
+
+    public void LoginOut(){
+        setAccount(null);
+    }
+
 
     public void getUserDetail(String id , DataCallback<UserDetail> callback){
         new Handler().postDelayed(() -> callback.success("",createVirtualUserDtail()), 1000);

@@ -14,6 +14,7 @@ public class UserPresenter extends Presenter<UserFragment> {
     protected void onCreateView(UserFragment view) {
         super.onCreateView(view);
         getView().setUser(UserModel.getInstance().getAccount());
+        UserModel.getInstance().registerUserChange(user -> getView().setUser(user));
     }
 
 
@@ -35,50 +36,50 @@ public class UserPresenter extends Presenter<UserFragment> {
     }
 
     public void startAttention(){
-        //if (checkLogin()) {
+        if (checkLogin()) {
             Intent i = new Intent(getView().getActivity(), AttentionActivity.class);
             i.putExtra("id", UserModel.getInstance().getAccount().getId());
             getView().startActivity(i);
-        //}
+        }
     }
     public void startFans(){
-        //if (checkLogin()){
+        if (checkLogin()){
             Intent i = new Intent(getView().getActivity(), FansActivity.class);
             i.putExtra("id", UserModel.getInstance().getAccount().getId());
             getView().startActivity(i);
-        //}
+        }
 
     }
     public void startJoinDate(){
-        //if (checkLogin()){
+        if (checkLogin()){
             Intent i = new Intent(getView().getActivity(),JoinDateActivity.class);
             i.putExtra("id",UserModel.getInstance().getAccount().getId());
             getView().startActivity(i);
-        //}
+        }
 
     }
     public void startCollection(){
-        //if (checkLogin()){
+        if (checkLogin()){
             Intent i = new Intent(getView().getActivity(),CollectionDateActivity.class);
             i.putExtra("id",UserModel.getInstance().getAccount().getId());
             getView().startActivity(i);
-        //}
+        }
 
 
     }
 
     public void startContact(){
-        //if (checkLogin()) {
+        if (checkLogin()) {
             Intent i = new Intent(getView().getActivity(), ContactActivity.class);
             i.putExtra("id", UserModel.getInstance().getAccount().getId());
             getView().startActivity(i);
-        //}
+        }
     }
 
     public void startCertification(){
-        //if (checkLogin()) {
+        if (checkLogin()) {
             Intent i = new Intent(getView().getActivity(), CertificationActivity.class);
             getView().startActivity(i);
-        //}
+        }
     }
 }

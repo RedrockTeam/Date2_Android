@@ -136,10 +136,11 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:gravity="center_vertical"
                     tool:text="19人已参加"/>
                 <ImageView
-                    android:layout_width="16dp"
+                    android:layout_width="32dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_arrows_right"/>
             </LinearLayout>
@@ -148,6 +149,7 @@
                 android:id="@+id/member"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:numColumns="6"/>
 
             <View
@@ -165,10 +167,11 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
                     tool:text="2条评论"/>
                 <ImageView
-                    android:layout_width="16dp"
+                    android:layout_width="32dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_arrows_right"/>
             </LinearLayout>
@@ -176,7 +179,8 @@
             <com.redrock.date2.utils.LinearWrapContentRecyclerView
                 android:id="@+id/comment_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
 
         </LinearLayout>
 

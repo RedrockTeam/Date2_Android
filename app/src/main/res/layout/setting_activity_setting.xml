@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/include_toolbar"></include>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/shadow_top"/>
+    <LinearLayout
+        android:id="@+id/view_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@android:color/white">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:text="活动设置"
+            android:layout_margin="16dp"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_arrows_right"
+            android:layout_marginRight="16dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/view_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:text="关于我们"
+            android:layout_margin="16dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/view_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:text="意见反馈"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+    android:id="@+id/view_update"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginTop="1dp"
+    android:background="@android:color/white">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
+        android:text="检查更新"
+        android:layout_margin="16dp"/>
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/view_update_log"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:text="更新记录"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/shadow_bottom"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/shadow_top"/>
+    <LinearLayout
+        android:id="@+id/view_sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@android:color/white">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:text="退出登录"
+            android:layout_margin="16dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/shadow_bottom"/>
+</LinearLayout>

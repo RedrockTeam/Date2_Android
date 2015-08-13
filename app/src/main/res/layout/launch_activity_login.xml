@@ -8,7 +8,10 @@
     <ImageView
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:src="@drawable/test_pic1"
+        android:scaleType="centerCrop"
+        />
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,12 +29,15 @@
                     android:layout_height="32dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_phone"/>
-                <TextView
+                <EditText
                     android:id="@+id/phone"
                     android:layout_marginLeft="16dp"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:hint="请输入手机号"
+                    android:background="@null"
+                    android:textSize="14sp"
+                    android:inputType="number"
                     android:layout_height="48dp" />
             </LinearLayout>
             <View
@@ -49,12 +55,15 @@
                     android:layout_height="32dp"
                     android:layout_marginLeft="16dp"
                     android:src="@drawable/ic_password"/>
-                <TextView
+                <EditText
                     android:id="@+id/password"
                     android:layout_marginLeft="16dp"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:hint="请输入密码"
+                    android:background="@null"
+                    android:textSize="14sp"
+                    android:inputType="textPassword"
                     android:layout_height="48dp" />
             </LinearLayout>
 

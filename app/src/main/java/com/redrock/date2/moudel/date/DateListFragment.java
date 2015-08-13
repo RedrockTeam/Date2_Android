@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.beam.nucleus.factory.RequiresPresenter;
 import com.jude.beam.nucleus.view.NucleusFragment;
@@ -15,6 +16,7 @@ import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
+import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.model.bean.Banner;
 import com.redrock.date2.model.bean.Date;
@@ -75,6 +77,8 @@ public class DateListFragment extends NucleusFragment<DateListPresenter> {
                 @Override
                 public View getView(ViewGroup viewGroup, int i) {
                     SimpleDraweeView image = new SimpleDraweeView(getActivity());
+                    RoundingParams params = RoundingParams.fromCornersRadius(JUtils.dip2px(2));
+                    image.getHierarchy().setRoundingParams(params);
                     image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                     image.setImageURI(Uri.parse(banner[i].getImage()));
                     return image;

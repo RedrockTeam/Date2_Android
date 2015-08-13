@@ -25,15 +25,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:paddingBottom="4dp"
             android:gravity="center">
             <ImageView
                 android:id="@+id/img_main"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/tab_main_unfocus"
-                android:layout_marginBottom="4dp"/>
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/tab_main_unfocus"/>
             <TextView
                 android:id="@+id/tv_main"
                 android:layout_width="wrap_content"
@@ -51,14 +50,13 @@
             android:layout_weight="1"
             android:gravity="center"
             android:paddingBottom="4dp"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/img_find"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/tab_find_unfocus"
-                android:layout_marginBottom="4dp"/>
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/tab_find_unfocus"/>
             <TextView
                 android:id="@+id/tv_find"
                 android:layout_width="wrap_content"
@@ -94,14 +92,13 @@
             android:layout_weight="1"
             android:gravity="center"
             android:paddingBottom="4dp"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/img_message"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/tab_message_unfocus"
-                android:layout_marginBottom="4dp"/>
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/tab_message_unfocus"/>
             <TextView
                 android:id="@+id/tv_message"
                 android:layout_width="wrap_content"
@@ -119,13 +116,12 @@
             android:layout_weight="1"
             android:gravity="center"
             android:paddingBottom="4dp"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="10dp">
             <ImageView
                 android:id="@+id/img_user"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/tab_user_unfocus"
-                android:layout_marginBottom="4dp"/>
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/tab_user_unfocus"/>
             <TextView
                 android:id="@+id/tv_user"
                 android:layout_width="wrap_content"
