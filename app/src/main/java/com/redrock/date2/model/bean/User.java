@@ -1,9 +1,11 @@
 package com.redrock.date2.model.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by zhuchenxi on 15/8/2.
  */
-public class User {
+public class User implements Serializable{
     private String id;
     private String face;
     private String name;

@@ -17,7 +17,7 @@ public class FansPresenter extends Presenter<FansActivity> {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         id = getView().getIntent().getStringExtra("id");
-        UserModel.getInstance().getAttenttion("0", new DataCallback<User[]>() {
+        UserModel.getInstance().getAttention("0", new DataCallback<User[]>() {
             @Override
             public void success(String info, User[] data) {
                 getView().addData(users = data);

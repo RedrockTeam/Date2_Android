@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/gray_light">
     <include layout="@layout/include_toolbar"/>
     <FrameLayout
         android:id="@+id/container"
@@ -28,14 +29,17 @@
             android:paddingBottom="4dp"
             android:gravity="center">
             <ImageView
+                android:id="@+id/img_main"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/tab_main"
+                android:src="@drawable/tab_main_unfocus"
                 android:layout_marginBottom="4dp"/>
             <TextView
+                android:id="@+id/tv_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
+                android:textColor="@color/gray_deep"
                 android:text="首页"/>
         </LinearLayout>
 
@@ -50,13 +54,16 @@
             android:layout_marginTop="16dp">
 
             <ImageView
+                android:id="@+id/img_find"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/tab_find"
+                android:src="@drawable/tab_find_unfocus"
                 android:layout_marginBottom="4dp"/>
             <TextView
+                android:id="@+id/tv_find"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/gray_deep"
                 android:textSize="10sp"
                 android:text="发现"/>
 
@@ -69,15 +76,12 @@
             android:layout_weight="1"
             android:gravity="center_horizontal">
 
-            <android.support.design.widget.FloatingActionButton
+            <ImageView
                 android:id="@+id/post"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_add"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/tab_add"
                 android:layout_marginTop="6dp"
-                app:borderWidth="0dp"
-                app:fabSize="mini"
-                app:elevation="2dp"
                 />
 
         </LinearLayout>
@@ -93,13 +97,16 @@
             android:layout_marginTop="16dp">
 
             <ImageView
+                android:id="@+id/img_message"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/tab_message"
+                android:src="@drawable/tab_message_unfocus"
                 android:layout_marginBottom="4dp"/>
             <TextView
+                android:id="@+id/tv_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/gray_deep"
                 android:textSize="10sp"
                 android:text="消息"/>
         </LinearLayout>
@@ -114,14 +121,17 @@
             android:paddingBottom="4dp"
             android:layout_marginTop="16dp">
             <ImageView
+                android:id="@+id/img_user"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/tab_user"
+                android:src="@drawable/tab_user_unfocus"
                 android:layout_marginBottom="4dp"/>
             <TextView
+                android:id="@+id/tv_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
+                android:textColor="@color/gray_deep"
                 android:text="我的"/>
         </LinearLayout>
     </LinearLayout>

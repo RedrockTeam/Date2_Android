@@ -22,10 +22,10 @@
 
         <ImageView
             android:id="@+id/ic_person"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_persons_small"
+            android:src="@drawable/ic_persons"
             android:layout_below="@+id/image"
             />
 
@@ -48,6 +48,9 @@
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Caption"
             tool:text="10"
+
+            android:layout_alignTop="@+id/ic_person"
+            android:layout_alignBottom="@+id/ic_person"
             android:layout_marginRight="8dp"
             android:gravity="center_vertical"
             android:layout_alignParentRight="true"
@@ -56,11 +59,11 @@
             />
         <ImageView
             android:id="@+id/ic_comment"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_toLeftOf="@id/comment"
             android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_comment_small"
+            android:src="@drawable/ic_comment"
             android:layout_below="@+id/image"
             />
 
@@ -70,6 +73,9 @@
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Caption"
             tool:text="10"
+
+            android:layout_alignTop="@+id/ic_person"
+            android:layout_alignBottom="@+id/ic_person"
             android:gravity="center_vertical"
             android:layout_toLeftOf="@+id/ic_comment"
             android:layout_below="@+id/image"
@@ -77,10 +83,10 @@
             />
         <ImageView
             android:id="@+id/ic_praise"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_toLeftOf="@id/praise"
-            android:src="@drawable/ic_praise_black"
+            android:src="@drawable/ic_praise_unfocus"
             android:layout_below="@+id/image"
             />
 

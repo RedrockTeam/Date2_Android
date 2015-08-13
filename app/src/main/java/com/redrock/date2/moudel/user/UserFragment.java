@@ -78,6 +78,8 @@ public class UserFragment extends NucleusFragment<UserPresenter> {
             sign.setText(user.getSign());
             attention.setText(user.getAttentionCount());
             fans.setText(user.getFansCount());
+        }else{
+            name.setText("点击登录");
         }
     }
 }

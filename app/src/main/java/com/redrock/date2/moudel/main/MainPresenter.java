@@ -31,24 +31,28 @@ public class MainPresenter extends Presenter<MainActivity> {
             mDateFragment.showMain();
         }
         getView().showFragment(mDateFragment);
+        getView().setFocus(0);
     }
     public void showActionFragment(){
         if (mActionFragment==null){
             mActionFragment = new ActionFragment();
         }
         getView().showFragment(mActionFragment);
+        getView().setFocus(1);
     }
     public void showMessageFragment(){
         if (mMessageFragment==null){
             mMessageFragment = new MessageFragment();
         }
         getView().showFragment(mMessageFragment);
+        getView().setFocus(2);
     }
     public void showUserFragment(){
         if (mUserFragment==null){
             mUserFragment = new UserFragment();
         }
         getView().showFragment(mUserFragment);
+        getView().setFocus(3);
     }
     public void startPost(int typeId){
         Intent i = new Intent(getView(), WriteDateActivity.class);

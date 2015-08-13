@@ -1,11 +1,12 @@
 package com.redrock.date2.moudel.main;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.jude.beam.nucleus.factory.RequiresPresenter;
@@ -33,7 +34,23 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     @InjectView(R.id.user)
     LinearLayout user;
     @InjectView(R.id.post)
-    FloatingActionButton post;
+    ImageView post;
+    @InjectView(R.id.img_main)
+    ImageView imgMain;
+    @InjectView(R.id.tv_main)
+    TextView tvMain;
+    @InjectView(R.id.img_find)
+    ImageView imgFind;
+    @InjectView(R.id.tv_find)
+    TextView tvFind;
+    @InjectView(R.id.img_message)
+    ImageView imgMessage;
+    @InjectView(R.id.tv_message)
+    TextView tvMessage;
+    @InjectView(R.id.img_user)
+    ImageView imgUser;
+    @InjectView(R.id.tv_user)
+    TextView tvUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +67,28 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         user.setOnClickListener(v -> getPresenter().showUserFragment());
     }
 
+    public void setFocus(int focusIndex) {
+        ImageView[] imgs = new ImageView[]{imgMain,imgFind,imgMessage,imgUser};
+        TextView[] tvs = new TextView[]{tvMain,tvFind,tvMessage,tvUser};
+        int[] resFocus = new int[]{R.drawable.tab_main_focus,R.drawable.tab_find_focus,R.drawable.tab_message_focus,R.drawable.tab_user_focus};
+        int[] resUnFocus = new int[]{R.drawable.tab_main_unfocus,R.drawable.tab_find_unfocus,R.drawable.tab_message_unfocus,R.drawable.tab_user_unfocus};
+        for (int i = 0; i < 4; i++) {
+            if (i==focusIndex){
+                imgs[i].setImageResource(resFocus[i]);
+                tvs[i].setTextColor(getResources().getColor(R.color.orange));
+            }else{
+                imgs[i].setImageResource(resUnFocus[i]);
+                tvs[i].setTextColor(getResources().getColor(R.color.gray_deep));
+            }
+        }
+    }
+
     public void showFragment(Fragment fragment) {
         JUtils.Log("fragment:" + fragment.getClass().getName());
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 
-    public void showDateTypeSelector(){
+    public void showDateTypeSelector() {
         DateType[] types = DateModel.getInstance().getDateType();
         String[] strings = new String[types.length];
         for (int i = 0; i < types.length; i++) {
@@ -67,7 +100,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
                     public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                       getPresenter().startPost(types[which].getId());
+                        getPresenter().startPost(types[which].getId());
                     }
                 })
                 .show();

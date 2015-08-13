@@ -1,1 +1,1 @@
-include ':app', ':umengfamily'
+include ':app', ':umengfamily', ':SMSSDK'

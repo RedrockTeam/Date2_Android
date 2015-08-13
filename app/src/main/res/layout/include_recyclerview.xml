@@ -5,6 +5,7 @@
     android:id="@+id/recyclerview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray_light"
     app:layout_empty="@layout/view_list_empty"
     app:layout_progress="@layout/view_list_progress"
     app:scrollbarStyle="insideInset" />

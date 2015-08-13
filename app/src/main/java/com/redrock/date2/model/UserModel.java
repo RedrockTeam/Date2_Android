@@ -1,30 +1,56 @@
 package com.redrock.date2.model;
 
+import android.content.Context;
 import android.os.Handler;
 
 import com.jude.beam.model.AbsModel;
+import com.jude.utils.JFileManager;
+import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.bean.UserDetail;
 import com.redrock.date2.model.callback.DataCallback;
+
+import rx.functions.Action1;
+import rx.subjects.BehaviorSubject;
 
 /**
  * Created by zhuchenxi on 15/8/2.
  */
 public class UserModel extends AbsModel{
-
     public static UserModel getInstance() {
         return getInstance(UserModel.class);
     }
+    public static final String ACCOUNT_FILE = "account";
+    private User account;
+    private BehaviorSubject<User> mUserBehaviorSubject;
+
+    @Override
+    protected void onAppCreateOnBackThread(Context ctx) {
+        super.onAppCreateOnBackThread(ctx);
+        mUserBehaviorSubject = BehaviorSubject.create();
+        getAccount();
+    }
+
+    public void registerUserChange(Action1<User> action1){
+        mUserBehaviorSubject.subscribe(action1);
+    }
 
     public User getAccount(){
-        return createVirtualUser();
+        if (account!=null)return account;
+        else return (User) JFileManager.getInstance().getFolder(Dir.Object).readObjectFromFile(ACCOUNT_FILE);
+    }
+
+    public void setAccount(User user){
+        account = user;
+        JFileManager.getInstance().getFolder(Dir.Object).writeObjectToFile(user,ACCOUNT_FILE);
+        mUserBehaviorSubject.onNext(user);
     }
 
     public void getUserDetail(String id , DataCallback<UserDetail> callback){
         new Handler().postDelayed(() -> callback.success("",createVirtualUserDtail()), 1000);
     }
 
-    public void getAttenttion(String id,DataCallback<User[]> callback){
+    public void getAttention(String id, DataCallback<User[]> callback){
         new Handler().postDelayed(() -> callback.success("",createVirtualUsers(20)), 1000);
     }
 

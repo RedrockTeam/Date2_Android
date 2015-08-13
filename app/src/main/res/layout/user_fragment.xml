@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_material_light">
+    android:background="@color/gray_light">
 
     <View
         android:layout_width="match_parent"
@@ -24,6 +24,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            app:overlayImage="@drawable/ic_person"
             app:roundAsCircle="true"/>
         <TextView
             android:id="@+id/name"
