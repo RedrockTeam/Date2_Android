@@ -15,5 +15,20 @@ public class Constant {
     };
 
 
+    //筛选
+    public static final String [] SORT_STYLE = {
+            "最热","最新"
+    };
+    public static final String [] SORT_USER = {
+            "不限","只看男生","只看女生"
+    };
+    public static final String [] SORT_COST = {
+            "不限","无消费","AA制","我请客","求包养"
+    };
+    public static final String [] SORT_TIME = {
+            "不限","今天","两天内","一周内","只看周末"
+
+    };
+
 
 }

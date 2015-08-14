@@ -64,11 +64,14 @@
                     android:paddingLeft="8dp"
                     android:gravity="center_vertical"
                     android:textSize="18sp"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"/>
                 <ImageView
                     android:id="@+id/img_female"
                     android:layout_width="32dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="48dp"
                     android:src="@drawable/ic_female_unfocus"/>
                 <TextView
                     android:id="@+id/tv_female"
@@ -78,6 +81,14 @@
                     android:paddingLeft="8dp"
                     android:gravity="center_vertical"
                     android:textSize="18sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:gravity="bottom"
+                    android:layout_marginRight="32dp"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/holo_red_light"
+                    android:text="不可修改"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"

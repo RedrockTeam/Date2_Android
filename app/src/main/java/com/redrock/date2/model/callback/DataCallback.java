@@ -42,8 +42,6 @@ public abstract class DataCallback<T> extends LinkCallback {
             success(info,data);
         }else if (status == API.CODE.PERMISSION_DENIED){
             authorizationFailure();
-        }else if (status == API.CODE.Failure){
-            failure(info);
         }else{
             error(info);
         }

@@ -26,10 +26,10 @@ public abstract class StatusCallback extends LinkCallback {
             result(status, info);
             if(status == API.CODE.SUCCEED){
                 success(info);
-            }else if (status == API.CODE.Failure){
-                failure(info);
-            }else if (status == API.CODE.PERMISSION_DENIED){
+            } else if (status == API.CODE.PERMISSION_DENIED){
                 authorizationFailure();
+            } else {
+                failure(info);
             }
         } catch (JSONException e) {
             error("数据解析错误");

@@ -16,6 +16,8 @@ import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.callback.DataCallback;
 import com.redrock.date2.model.callback.StatusCallback;
 
+import java.util.Random;
+
 /**
  * Created by Mr.Jude on 2015/8/8.
  */
@@ -76,6 +78,10 @@ public class DateModel extends AbsModel {
         new Handler().postDelayed(() -> callback.success("", createVirtualDateDetail()), 1000);
     }
 
+    public void getComments(String id,int page,DataCallback<Comment[]> callback){
+        new Handler().postDelayed(() -> callback.success("", createVirtualComments(20)), 1000);
+    }
+
     public DateDetail createVirtualDateDetail(){
         return new DateDetail(3,
                 "专车司机：月入两三万的日子一去不复返",
@@ -96,10 +102,10 @@ public class DateModel extends AbsModel {
                         UserModel.getInstance().createVirtualUser(),
                 },
                 UserModel.getInstance().createVirtualUser(),
-                creatVirtualComments(10));
+                createVirtualComments(10));
     }
 
-    public Comment[] creatVirtualComments(int count){
+    public Comment[] createVirtualComments(int count){
         Comment[] comments = new Comment[count];
         for (int i = 0; i < comments.length; i++) {
             comments[i] = new Comment(
@@ -114,12 +120,13 @@ public class DateModel extends AbsModel {
 
     public Date[] createVirtualDate(int count){
         Date[] dates = new Date[count];
+        Random r= new Random();
         for (int i = 0; i < dates.length; i++) {
             dates[i] = new Date("http://i2.hdslb.com/account/face/5871456/ccf106b0/myface.png",
                     "Jude",
                     "当电影遇到移动短视频，又一轮内容UGC在爆发",
                     1439081137,
-                    5,
+                    r.nextInt(DateModel.getInstance().getDateType().length-2)+1,
                     1439000137,
                     "工信部已经推行了很久的“手机实名制”",
                     "AA制",

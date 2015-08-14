@@ -23,6 +23,7 @@ public class BaseActivity<T extends Presenter> extends NucleusAppCompatActivity<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SwipeBackHelper.onCreate(this);
+        SwipeBackHelper.getCurrentPage(this).setSwipeSensitivity(0.3f);
     }
 
     protected void setToolBar(boolean returnAble){

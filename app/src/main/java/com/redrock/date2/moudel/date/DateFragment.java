@@ -1,5 +1,6 @@
 package com.redrock.date2.moudel.date;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -65,6 +67,14 @@ public class DateFragment extends NucleusFragment<DatePresenter> {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_main,menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.filtrate){
+            startActivity(new Intent(getActivity(),FiltrateActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class DateFragmentListAdapter extends FragmentPagerAdapter {

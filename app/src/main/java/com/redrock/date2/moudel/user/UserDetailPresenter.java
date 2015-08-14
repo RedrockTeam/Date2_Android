@@ -1,5 +1,6 @@
 package com.redrock.date2.moudel.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.jude.beam.nucleus.manager.Presenter;
@@ -30,4 +31,28 @@ public class UserDetailPresenter extends Presenter<UserDetailActivity> {
         super.onCreateView(view);
         if (userDetail!=null)getView().setUserDetail(userDetail);
     }
+
+    public void startAttention(){
+            Intent i = new Intent(getView(), AttentionActivity.class);
+            i.putExtra("id", UserModel.getInstance().getAccount().getId());
+            getView().startActivity(i);
+
+    }
+    public void startFans(){
+            Intent i = new Intent(getView(), FansActivity.class);
+            i.putExtra("id", UserModel.getInstance().getAccount().getId());
+            getView().startActivity(i);
+    }
+
+    public void startJoinDate(){
+            Intent i = new Intent(getView(),JoinDateActivity.class);
+            i.putExtra("id",UserModel.getInstance().getAccount().getId());
+            getView().startActivity(i);
+    }
+    public void startCollection(){
+            Intent i = new Intent(getView(),CollectionDateActivity.class);
+            i.putExtra("id",UserModel.getInstance().getAccount().getId());
+            getView().startActivity(i);
+    }
+
 }

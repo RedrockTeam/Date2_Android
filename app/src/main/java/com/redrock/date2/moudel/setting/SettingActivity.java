@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 
 import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.app.BaseActivity;
+import com.umeng.update.UmengUpdateAgent;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -36,6 +38,19 @@ public class SettingActivity extends BaseActivity<SettingPresenter> {
         setContentView(R.layout.setting_activity_setting);
         ButterKnife.inject(this);
         viewSignOut.setOnClickListener(v -> getPresenter().LoginOut());
-        viewUpdateLog.setOnClickListener(v->startActivity(new Intent(this,UpdateLogActivity.class)));
+        viewUpdateLog.setOnClickListener(v->startActivity(new Intent(this, UpdateLogActivity.class)));
+        viewAbout.setOnClickListener(v->startActivity(new Intent(this,AboutUsActivity.class)));
+        viewFeedback.setOnClickListener(v->startActivity(new Intent(this,FeedBackActivity.class)));
+        viewAction.setOnClickListener(v->startActivity(new Intent(this,NotifySettingActivity.class)));
+        viewUpdate.setOnClickListener(v->{
+            showProgress("检查更新中");
+            UmengUpdateAgent.forceUpdate(this);
+            UmengUpdateAgent.setUpdateListener((i, updateResponse) -> {
+                dismissProgress();
+                if (i == 1) {
+                    JUtils.Toast("暂无更新");
+                }
+            });
+        });
     }
 }

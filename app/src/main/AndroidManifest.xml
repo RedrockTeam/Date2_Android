@@ -32,7 +32,7 @@
         android:label="@string/app_name"
         android:theme="@style/TransTheme" >
 
-        <meta-data android:value="55c71237e0f55a9a8d002a6a" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="55cd6481e0f55a807d003272" android:name="UMENG_APPKEY"></meta-data>
         <meta-data android:value="Jude" android:name="UMENG_CHANNEL"/>
 
         <meta-data
@@ -86,6 +86,21 @@
             android:label="设置"></activity>
         <activity android:name=".moudel.setting.UpdateLogActivity"
             android:label="更新记录"></activity>
+        <activity android:name=".moudel.action.ActionDetailActivity"
+            android:label="活动详情"></activity>
+        <activity android:name=".moudel.date.FiltrateActivity"
+            android:label="筛选"></activity>
+        <activity android:name=".moudel.setting.AboutUsActivity"
+            android:label="关于我们"></activity>
+        <activity android:name=".moudel.setting.FeedBackActivity"
+            android:label="意见反馈"></activity>
+        <activity android:name=".moudel.setting.NotifySettingActivity"
+            android:label="提醒设置"></activity>
+        <activity android:name=".moudel.user.UserListActivity"
+            ></activity>
+        <activity android:name=".moudel.date.CommentActivity"
+            android:label="评论列表"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

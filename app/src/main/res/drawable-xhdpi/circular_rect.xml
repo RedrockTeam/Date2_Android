@@ -4,7 +4,7 @@
         android:radius="2dp"
         ></corners>
     <solid
-        android:color="@color/orange"
+        android:color="@color/pink"
         ></solid>
 
 </shape>

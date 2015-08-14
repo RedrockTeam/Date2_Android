@@ -1,5 +1,6 @@
 package com.redrock.date2.moudel.user;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -34,5 +35,10 @@ public class UserViewHolder extends BaseViewHolder<User> {
             face.setImageURI(Uri.parse(data.getFace()));
         name.setText(data.getName());
         sign.setText(data.getSign());
+        itemView.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(),UserDetailActivity.class);
+            i.putExtra("id",data.getId());
+            v.getContext().startActivity(i);
+        });
     }
 }

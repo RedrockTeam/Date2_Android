@@ -31,13 +31,17 @@
             android:layout_marginRight="16dp"
             />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"
+        />
     <LinearLayout
         android:id="@+id/view_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginTop="1dp"
         android:background="@android:color/white">
         <TextView
             android:layout_width="0dp"
@@ -47,13 +51,17 @@
             android:text="关于我们"
             android:layout_margin="16dp"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"
+        />
     <LinearLayout
         android:id="@+id/view_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginTop="1dp"
         android:background="@android:color/white">
         <TextView
             android:layout_width="0dp"
@@ -64,13 +72,17 @@
             android:layout_margin="16dp"/>
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"
+        />
     <LinearLayout
     android:id="@+id/view_update"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:layout_marginTop="1dp"
     android:background="@android:color/white">
     <TextView
         android:layout_width="0dp"
@@ -81,13 +93,18 @@
         android:layout_margin="16dp"/>
 
 </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"
+        />
+
     <LinearLayout
         android:id="@+id/view_update_log"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginTop="1dp"
         android:background="@android:color/white">
         <TextView
             android:layout_width="0dp"

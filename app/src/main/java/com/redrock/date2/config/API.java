@@ -15,8 +15,12 @@ public class API {
     }
 
     public static class CODE {
-        public static final int SUCCEED = 200;
-        public static final int Failure = 0;
-        public static final int PERMISSION_DENIED = 400;
+        public static final int SUCCEED = 0;
+        public static final int PARAMS_ERROR = 1;
+        public static final int SERVER_ERROR = 1001;
+        public static final int LOGINSTATUS_DENIED = 1002;
+        public static final int ACCOUNT_DENIED = 1002;
+        public static final int PARAMS_INVALID = -1;
+        public static final int PERMISSION_DENIED = -3;
     }
 }

@@ -26,6 +26,7 @@ public class UpdateLogActivity extends BaseActivity<UpdateLogPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_activity_updatelog);
         ButterKnife.inject(this);
+        showProgress("加载中");
         RequestManager.getInstance().get("https://raw.githubusercontent.com/RedrockTeam/Date2_Android/master/updateLog.txt", new RequestListener() {
             @Override
             public void onRequest() {
@@ -34,12 +35,13 @@ public class UpdateLogActivity extends BaseActivity<UpdateLogPresenter> {
 
             @Override
             public void onSuccess(String s) {
+                dismissProgress();
                 text.setText(s);
             }
 
             @Override
             public void onError(String s) {
-
+                dismissProgress();
             }
         });
     }

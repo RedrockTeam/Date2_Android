@@ -6,6 +6,7 @@ import android.os.Handler;
 import com.jude.beam.model.AbsModel;
 import com.jude.utils.JFileManager;
 import com.jude.utils.JUtils;
+import com.redrock.date2.R;
 import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.bean.UserDetail;
@@ -65,7 +66,7 @@ public class UserModel extends AbsModel{
             public void run() {
                 callback.success("", createVirtualUser());
                 //TODO 临时处理callback不能链式调用的问题
-               setAccount( createVirtualUser());
+                setAccount(createVirtualUser());
             }
         }, 1000);
     }
@@ -76,11 +77,18 @@ public class UserModel extends AbsModel{
 
 
     public void getUserDetail(String id , DataCallback<UserDetail> callback){
-        new Handler().postDelayed(() -> callback.success("",createVirtualUserDtail()), 1000);
+        new Handler().postDelayed(() -> callback.success("", createVirtualUserDtail()), 1000);
     }
 
     public void getAttention(String id, DataCallback<User[]> callback){
         new Handler().postDelayed(() -> callback.success("",createVirtualUsers(20)), 1000);
+    }
+
+
+    public User createEmptyUser(){
+        return new User(
+                "0",JUtils.getUriFromRes(R.id.ic_person).getPath(),"","","",""
+        );
     }
 
     public User[] createVirtualUsers(int count){

@@ -28,7 +28,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginLeft="16dp"
-                    android:src="@drawable/ic_phone"/>
+                    android:src="@drawable/ic_account"/>
                 <EditText
                     android:id="@+id/phone"
                     android:layout_marginLeft="16dp"

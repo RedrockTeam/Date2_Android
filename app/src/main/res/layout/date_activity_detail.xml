@@ -18,11 +18,14 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/face"
                     android:layout_width="56dp"
@@ -66,19 +69,24 @@
                 android:layout_height="0.5dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:alpha="0.7"
                 android:background="@android:color/darker_gray"/>
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 style="@style/Base.TextAppearance.AppCompat.Subhead"
                 tool:text="Ubuntu手机全球发售，粉丝们该充值信仰了"
                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <TextView
                     android:id="@+id/time"
@@ -108,8 +116,9 @@
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="16dp"
                 style="@style/Base.TextAppearance.AppCompat.Caption"
                 tool:text="· 北京市东花市北里20号楼6单元501室"/>
 
@@ -117,7 +126,8 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="16dp"
                 style="@style/Base.TextAppearance.AppCompat.Caption"
                 tool:text="· 你还记得Ubuntu么？在经历了与魅族等品牌合作后，他们自己的智能手机终于要在今年问世了。除了中国和欧洲市场，世界上其他地区的Linux粉丝也将可以买到Ubuntu手机。"/>
 
@@ -126,42 +136,61 @@
                 android:layout_height="0.5dp"
                 android:background="@android:color/darker_gray"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp"
+                android:alpha="0.7"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="24dp">
-                <TextView
-                    android:id="@+id/post_count"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/black"
-                    android:gravity="center_vertical"
-                    tool:text="19人已参加"/>
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_arrows_right"/>
-            </LinearLayout>
-
-            <GridView
-                android:id="@+id/member"
+                android:id="@+id/view_member"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:numColumns="6"/>
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp">
+                    <TextView
+                        android:id="@+id/post_count"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:gravity="center_vertical"
+                        tool:text="19人已参加"/>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_arrows_right"/>
+                </LinearLayout>
+
+                <GridView
+                    android:id="@+id/member"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:numColumns="6"/>
+
+
+            </LinearLayout>
+
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:alpha="0.7"
                 android:background="@android:color/darker_gray"/>
 
             <LinearLayout
+                android:id="@+id/view_comment"
                 android:layout_width="match_parent"
-                android:layout_height="24dp">
+                android:layout_height="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
                 <TextView
                     android:id="@+id/comment_count"
                     android:layout_width="0dp"
@@ -179,6 +208,8 @@
             <com.redrock.date2.utils.LinearWrapContentRecyclerView
                 android:id="@+id/comment_list"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"/>
 

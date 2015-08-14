@@ -1,5 +1,6 @@
 package com.redrock.date2.moudel.user;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -28,7 +29,7 @@ public class CertificationPresenter extends Presenter<CertificationActivity> {
 
             @Override
             public void onImageLoaded(Uri uri) {
-                getView().setPhotoA(uri);
+                getView().setPhotoA(ImageProvider.readImageWithSize(uri,500,500));
             }
 
             @Override
@@ -46,7 +47,7 @@ public class CertificationPresenter extends Presenter<CertificationActivity> {
 
             @Override
             public void onImageLoaded(Uri uri) {
-                getView().setPhotoB(uri);
+                getView().setPhotoB(ImageProvider.readImageWithSize(uri,500,500));
             }
 
             @Override
@@ -56,4 +57,10 @@ public class CertificationPresenter extends Presenter<CertificationActivity> {
         });
     }
 
+
+    @Override
+    protected void onResult(int requestCode, int resultCode, Intent data) {
+        super.onResult(requestCode, resultCode, data);
+        mProvider.onActivityResult(requestCode, resultCode, data);
+    }
 }

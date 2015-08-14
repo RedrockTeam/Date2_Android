@@ -27,8 +27,7 @@
         app:roundAsCircle="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/toolbar"
-        android:layout_margin="16dp"
-
+        android:layout_margin="8dp"
         />
     <TextView
         android:id="@+id/name"
@@ -48,7 +47,7 @@
         android:maxLength="25"
         android:textColor="@android:color/white"
         android:ellipsize="end"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         tool:text="约会宣言: Win10手机装安卓应用，微软剑走偏锋可是妙棋？"
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"/>
@@ -60,6 +59,7 @@
         android:orientation="horizontal"
         android:layout_below="@+id/sign">
         <LinearLayout
+            android:id="@+id/view_attention"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
@@ -78,6 +78,7 @@
                 android:text="关注"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/view_fans"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
@@ -120,10 +121,10 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/container"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="16dp">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="24dp"
+            android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@android:color/darker_gray"
             android:text="基本资料"/>
@@ -218,6 +219,10 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_arrows_right"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/darker_gray"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -235,8 +240,6 @@
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@android:color/darker_gray"/>
         <TextView
             android:id="@+id/chat"

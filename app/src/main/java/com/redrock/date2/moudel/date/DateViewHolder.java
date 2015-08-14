@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.utils.JTimeTransform;
+import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.config.Constant;
 import com.redrock.date2.model.DateModel;
@@ -69,10 +70,11 @@ public class DateViewHolder extends BaseViewHolder<Date> {
         praise.setText(data.getPraiseCount());
         comment.setText(data.getMemberCount());
 
+        JUtils.Log("Type" + data.getType());
         style.setText(DateModel.getInstance().findDateTypeById(data.getType()).getName());
         GradientDrawable drawable = (GradientDrawable) style.getBackground();
-        drawable.setColor(Color.parseColor(Constant.TYPE_COLOR[data.getType()]));
-
+        drawable.mutate();
+        drawable.setColor(Color.parseColor(Constant.TYPE_COLOR[data.getType()%DateModel.getInstance().getDateType().length]));
         itemView.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), DateDetailActivity.class)));
     }
 }

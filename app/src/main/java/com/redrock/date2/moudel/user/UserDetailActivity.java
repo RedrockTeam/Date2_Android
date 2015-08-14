@@ -46,12 +46,22 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     TextView attention;
     @InjectView(R.id.chat)
     TextView chat;
+    @InjectView(R.id.view_attention)
+    LinearLayout viewAttention;
+    @InjectView(R.id.view_fans)
+    LinearLayout viewFans;
+    @InjectView(R.id.container)
+    LinearLayout container;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_detail);
         ButterKnife.inject(this);
+        viewAttention.setOnClickListener(v->getPresenter().startAttention());
+        viewFans.setOnClickListener(v->getPresenter().startFans());
+        viewPublish.setOnClickListener(v->getPresenter().startJoinDate());
+        viewCollection.setOnClickListener(v->getPresenter().startCollection());
     }
 
     public void setUserDetail(UserDetail userDetail) {

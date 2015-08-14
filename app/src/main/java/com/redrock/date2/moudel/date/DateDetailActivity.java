@@ -1,5 +1,6 @@
 package com.redrock.date2.moudel.date;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,7 +14,10 @@ import com.jude.utils.JTimeTransform;
 import com.redrock.date2.R;
 import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.config.Constant;
+import com.redrock.date2.model.UserModel;
 import com.redrock.date2.model.bean.DateDetail;
+import com.redrock.date2.model.bean.User;
+import com.redrock.date2.moudel.user.UserListActivity;
 import com.redrock.date2.utils.LinearWrapContentRecyclerView;
 import com.redrock.date2.utils.RecentDateFormat;
 
@@ -62,6 +66,10 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
     TextView collection;
     @InjectView(R.id.container_bottom)
     LinearLayout containerBottom;
+    @InjectView(R.id.view_member)
+    LinearLayout viewMember;
+    @InjectView(R.id.view_comment)
+    LinearLayout viewComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,34 +78,43 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
         ButterKnife.inject(this);
     }
 
-    public void setDateDetail(DateDetail dateDetail){
-        if (dateDetail.getAuthor().getFace()!=null)
+    public void setDateDetail(DateDetail dateDetail) {
+        if (dateDetail.getAuthor().getFace() != null)
             face.setImageURI(Uri.parse(dateDetail.getAuthor().getFace()));
         name.setText(dateDetail.getAuthor().getName());
         title.setText(dateDetail.getTitle());
         timePost.setText(new JTimeTransform(dateDetail.getPostTime()).toString(new RecentDateFormat()));
         time.setText("· " + new JTimeTransform(dateDetail.getTime()).toString(new RecentDateFormat()));
-        costType.setText("· "+Constant.COST_TYPE[dateDetail.getCostType()]);
-        memberCount.setText("· "+dateDetail.getMemberCount()+"人");
-        address.setText("· "+dateDetail.getAddress());
-        content.setText("· "+dateDetail.getContent());
+        costType.setText("· " + Constant.COST_TYPE[dateDetail.getCostType()]);
+        memberCount.setText("· " + dateDetail.getMemberCount() + "人");
+        address.setText("· " + dateDetail.getAddress());
+        content.setText("· " + dateDetail.getContent());
 
-        if (dateDetail.getMember()!=null){
-            postCount.setText(dateDetail.getMember().length+"人已报名");
-            member.setAdapter(new FaceAdapter(DateDetailActivity.this,dateDetail.getMember()));
-        }else{
-            postCount.setText(0+"人已报名");
+        if (dateDetail.getMember() != null) {
+            postCount.setText(dateDetail.getMember().length + "人已报名");
+            member.setAdapter(new FaceAdapter(DateDetailActivity.this, dateDetail.getMember()));
+            viewMember.setOnClickListener(v -> {
+                Intent i = new Intent(this, UserListActivity.class);
+                i.putExtra("users", dateDetail.getMember());
+                i.putExtra("title", "报名列表");
+                startActivity(i);
+            });
+        } else {
+            member.setAdapter(new FaceAdapter(this, new User[]{UserModel.getInstance().createEmptyUser()}));
+            postCount.setText(0 + "人已报名");
         }
 
-        if (dateDetail.getComments()!=null){
-            commentCount.setText(dateDetail.getComments().length+"条评论");
-            commentList.setAdapter(new CommentAdapter(DateDetailActivity.this,dateDetail.getComments()));
-        }else{
+        if (dateDetail.getComments() != null) {
+            commentCount.setText(dateDetail.getComments().length + "条评论");
+            commentList.setAdapter(new CommentAdapter(DateDetailActivity.this, dateDetail.getComments()));
+            viewComment.setOnClickListener(v->{
+                Intent i = new Intent(this, CommentActivity.class);
+                startActivity(i);
+            });
+        } else {
             commentCount.setText("0条评论");
         }
     }
-
-
 
 
 }

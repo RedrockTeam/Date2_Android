@@ -1,6 +1,6 @@
 package com.redrock.date2.moudel.user;
 
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -41,10 +41,10 @@ public class CertificationActivity extends BaseActivity<CertificationPresenter> 
         return true;
     }
 
-    public void setPhotoA(Uri uri){
-        cardA.setImageURI(uri);
+    public void setPhotoA(Bitmap img){
+        cardA.setImageBitmap(img);
     }
-    public void setPhotoB(Uri uri){
-        cardB.setImageURI(uri);
+    public void setPhotoB(Bitmap img){
+        cardB.setImageBitmap(img);
     }
 }

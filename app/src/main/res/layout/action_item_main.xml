@@ -8,7 +8,6 @@
     android:layout_margin="8dp">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tool="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,77 +18,98 @@
             android:layout_height="150dp"
             android:layout_marginBottom="8dp"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/image"
+            android:layout_alignBottom="@+id/image"
+            android:background="@drawable/shadow_bg"
+            ></View>
 
-        <ImageView
-            android:id="@+id/ic_person"
-            android:layout_width="24dp"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@android:color/white"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_alignBottom="@+id/image"
+            android:singleLine="true"
+            android:ellipsize="end"
+            tool:text="大圣我要给你生猴子"/>
+        <TextView
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
             android:layout_height="24dp"
+            android:padding="4dp"
+            android:gravity="center"
+            android:layout_above="@+id/title"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_persons"
+            android:textColor="@android:color/white"
+            android:background="@drawable/circular_rect"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
             android:layout_below="@+id/image"
-            />
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            >
+            <ImageView
+                android:id="@+id/ic_person"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_persons"
+                />
 
-        <TextView
-            android:id="@+id/member"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Caption"
-            tool:text="8人"
-            android:gravity="center_vertical"
-            android:layout_toRightOf="@+id/ic_person"
-            android:layout_alignTop="@+id/ic_person"
-            android:layout_alignBottom="@+id/ic_person"
-            android:layout_marginLeft="8dp"
-            />
+            <TextView
+                android:id="@+id/member"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                style="@style/TextAppearance.AppCompat.Caption"
+                tool:text="8人"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                />
+            <ImageView
+                android:id="@+id/ic_praise"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_praise_unfocus"
+                />
+            <TextView
+                android:id="@+id/praise"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/TextAppearance.AppCompat.Caption"
+                tool:text="10"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                />
 
-        <TextView
-            android:id="@+id/comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Caption"
-            tool:text="10"
+            <ImageView
+                android:id="@+id/ic_comment"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/ic_comment"
+                />
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/TextAppearance.AppCompat.Caption"
+                tool:text="10"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                />
 
-            android:layout_alignTop="@+id/ic_person"
-            android:layout_alignBottom="@+id/ic_person"
-            android:layout_marginRight="8dp"
-            android:gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/image"
-            android:layout_marginLeft="4dp"
-            />
-        <ImageView
-            android:id="@+id/ic_comment"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_toLeftOf="@id/comment"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_comment"
-            android:layout_below="@+id/image"
-            />
-
-        <TextView
-            android:id="@+id/praise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Caption"
-            tool:text="10"
-
-            android:layout_alignTop="@+id/ic_person"
-            android:layout_alignBottom="@+id/ic_person"
-            android:gravity="center_vertical"
-            android:layout_toLeftOf="@+id/ic_comment"
-            android:layout_below="@+id/image"
-            android:layout_marginLeft="4dp"
-            />
-        <ImageView
-            android:id="@+id/ic_praise"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_toLeftOf="@id/praise"
-            android:src="@drawable/ic_praise_unfocus"
-            android:layout_below="@+id/image"
-            />
-
+        </LinearLayout>
 
     </RelativeLayout>
 

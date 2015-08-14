@@ -64,8 +64,6 @@ public class UserPresenter extends Presenter<UserFragment> {
             i.putExtra("id",UserModel.getInstance().getAccount().getId());
             getView().startActivity(i);
         }
-
-
     }
 
     public void startContact(){
