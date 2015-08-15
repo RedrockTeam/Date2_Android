@@ -38,6 +38,10 @@ public class BRViewAdapter extends ArrayAdapter<String> {
         notifyDataSetChanged();
     }
 
+    public void setFocusIndex(int index){
+        select(index);
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rootView = LayoutInflater.from(getContext()).inflate(
@@ -52,5 +56,6 @@ public class BRViewAdapter extends ArrayAdapter<String> {
     private void select(int position){
         target = position;
         notifyDataSetChanged();
+        listener.onSelect(position);
     }
 }

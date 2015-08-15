@@ -8,25 +8,13 @@ public class UserDetail extends User{
     private String tag;
     private String school;
     private String charmValue;
-    private boolean isCertification;
 
-    public UserDetail(String id,
-                      String face,
-                      String name,
-                      String sign,
-                      String attentionCount,
-                      String fansCount,
-                      String realName,
-                      String tag,
-                      String school,
-                      String charmValue,
-                      boolean isCertification) {
-        super(id, face, name, sign, attentionCount, fansCount);
+    public UserDetail(String id, String face, String name, String sign, int gender, int age, boolean isCertification, String attentionCount, String fansCount, String realName, String tag, String school, String charmValue) {
+        super(id, face, name, sign, gender, age, isCertification, attentionCount, fansCount);
         this.realName = realName;
         this.tag = tag;
         this.school = school;
         this.charmValue = charmValue;
-        this.isCertification = isCertification;
     }
 
     public String getRealName() {
@@ -61,13 +49,6 @@ public class UserDetail extends User{
         this.charmValue = charmValue;
     }
 
-    public boolean isCertification() {
-        return isCertification;
-    }
-
-    public void setIsCertification(boolean isCertification) {
-        this.isCertification = isCertification;
-    }
 
 
 }

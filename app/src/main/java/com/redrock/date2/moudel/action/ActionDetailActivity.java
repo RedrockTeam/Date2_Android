@@ -25,6 +25,7 @@ import com.redrock.date2.moudel.date.FaceAdapter;
 import com.redrock.date2.moudel.user.UserListActivity;
 import com.redrock.date2.utils.LinearWrapContentRecyclerView;
 import com.redrock.date2.utils.RecentDateFormat;
+import com.redrock.date2.utils.TAGView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -56,7 +57,7 @@ public class ActionDetailActivity extends BaseActivity<ActionDetailPresenter> {
     @InjectView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
     @InjectView(R.id.tag)
-    TextView tag;
+    TAGView tag;
     @InjectView(R.id.comment_count)
     TextView commentCount;
     @InjectView(R.id.comment_list)

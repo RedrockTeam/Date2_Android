@@ -1,6 +1,8 @@
 package com.redrock.date2.moudel.date;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.jude.beam.nucleus.factory.RequiresPresenter;
 import com.redrock.date2.R;
@@ -39,5 +41,30 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
         mUserAdapter = new BRViewAdapter(this, sortUser, Constant.SORT_USER, index -> getPresenter().setUser(index));
         mCostAdapter = new BRViewAdapter(this, sortCost, Constant.SORT_COST, index -> getPresenter().setCost(index));
         mTimeAdapter = new BRViewAdapter(this, sortTime, Constant.SORT_TIME, index -> getPresenter().setTime(index));
+    }
+
+    public void setSortStyle(int index){
+        mStyleAdapter.setFocusIndex(index);
+    }
+    public void setSortUser(int index){
+        mUserAdapter.setFocusIndex(index);
+    }
+    public void setSortCost(int index){
+        mCostAdapter.setFocusIndex(index);
+    }
+    public void setSortTime(int index){
+        mTimeAdapter.setFocusIndex(index);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_ok,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.ok)getPresenter().save();
+        return super.onOptionsItemSelected(item);
     }
 }

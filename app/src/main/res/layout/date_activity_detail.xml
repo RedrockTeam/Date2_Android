@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/face"
                     android:layout_toRightOf="@+id/face"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     tool:text="Jude"/>
                 <TextView
                     android:id="@+id/time_post"
@@ -53,6 +53,24 @@
                     android:layout_alignBaseline="@+id/name"
                     tool:text="1小时前"/>
 
+                <com.redrock.date2.utils.TAGView
+                    android:id="@+id/tag_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_toRightOf="@+id/face"
+                    android:layout_below="@+id/name"
+                    />
+                <com.redrock.date2.utils.TAGView
+                    android:id="@+id/tag_certification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_toRightOf="@+id/tag_user"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/name"
+                    app:tag_icon="@drawable/ic_certification"
+                    app:tag_color="@android:color/holo_green_light"
+                    app:tag_text="认证"
+                    />
                 <Button
                     android:id="@+id/btn_action"
                     android:layout_width="wrap_content"

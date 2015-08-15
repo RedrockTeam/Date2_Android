@@ -11,6 +11,9 @@ import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.bean.UserDetail;
 import com.redrock.date2.model.callback.DataCallback;
+import com.redrock.date2.model.callback.StatusCallback;
+
+import java.util.Random;
 
 import rx.functions.Action1;
 import rx.subjects.BehaviorSubject;
@@ -77,7 +80,7 @@ public class UserModel extends AbsModel{
 
 
     public void getUserDetail(String id , DataCallback<UserDetail> callback){
-        new Handler().postDelayed(() -> callback.success("", createVirtualUserDtail()), 1000);
+        new Handler().postDelayed(() -> callback.success("", createVirtualUserDetail()), 1000);
     }
 
     public void getAttention(String id, DataCallback<User[]> callback){
@@ -87,7 +90,7 @@ public class UserModel extends AbsModel{
 
     public User createEmptyUser(){
         return new User(
-                "0",JUtils.getUriFromRes(R.id.ic_person).getPath(),"","","",""
+                "0",JUtils.getUriFromRes(R.id.ic_person).getPath(),"","",1,2010,false,"",""
         );
     }
 
@@ -98,25 +101,31 @@ public class UserModel extends AbsModel{
         }
         return users;
     }
-    public UserDetail createVirtualUserDtail(){
+    public UserDetail createVirtualUserDetail(){
+        Random r= new Random();
         return new UserDetail(
                 "1",
                 "http://i2.hdslb.com/user/1244/124416/myface.jpg",
                 "Jude",
                 "投资教父阎焱：不以盈利为目的的商业都是假的，伪的互联网企业和需求都是用钱砸出来的",
+                r.nextInt(2),2010+r.nextInt(6),true,
                 "128","56","宋伊雪",
                 "吃货 运动狂魔",
                 "山东蓝翔",
-                "12580",
-                false);
+                "12580");
     }
 
     public User createVirtualUser(){
+        Random r= new Random();
         return new User(
                 "1",
                 "http://i2.hdslb.com/user/1244/124416/myface.jpg",
                 "Jude",
                 "投资教父阎焱：不以盈利为目的的商业都是假的，伪的互联网企业和需求都是用钱砸出来的",
-                "128","56");
+                r.nextInt(2),2010+r.nextInt(6),true,"128","56");
+    }
+
+    public void modifyFace(String originalImage, StatusCallback callback) {
+
     }
 }

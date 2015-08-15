@@ -11,8 +11,8 @@ android {
         applicationId "com.redrock.date2"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 10
-        versionName "0.2.0 Preview"
+        versionCode 11
+        versionName "0.2.1 Preview"
     }
     signingConfigs {
         release{
@@ -63,4 +63,5 @@ dependencies {
     compile project(':umengfamily')
     compile 'cn.bingoogolapple:bga-flowlayout:1.0.0@aar'
     compile project(':SMSSDK')
+    compile 'com.qiniu:qiniu-android-sdk:7.0.7'
 }

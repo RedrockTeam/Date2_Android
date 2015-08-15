@@ -39,6 +39,16 @@
         android:layout_below="@+id/face"
         android:layout_centerHorizontal="true"/>
 
+    <ImageView
+        android:id="@+id/gender"
+        android:layout_width="24dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/name"
+        android:layout_alignTop="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        tool:src="@drawable/ic_female_focus"/>
+
     <TextView
         android:id="@+id/sign"
         android:layout_width="wrap_content"
@@ -116,115 +126,146 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/container"
+        android:layout_above="@+id/container_bottom"
         android:orientation="vertical"
-        android:padding="16dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Caption"
-            android:textColor="@android:color/darker_gray"
-            android:text="基本资料"/>
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
             <TextView
-                android:layout_width="96dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="真实姓名："/>
-            <TextView
-                android:id="@+id/real_name"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                tool:text="吴紫琪"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:textColor="@android:color/darker_gray"
+                android:text="基本资料"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="真实姓名："/>
+                <TextView
+                    android:id="@+id/real_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    tool:text="吴紫琪"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="兴趣标签："/>
+                <TextView
+                    android:id="@+id/hobby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    tool:text="吃货 运动狂魔"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="学  校："/>
+                <TextView
+                    android:id="@+id/school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    tool:text="山东蓝翔"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="年  级："/>
+                <TextView
+                    android:id="@+id/age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    tool:text="2013级"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray"/>
+            <LinearLayout
+                android:id="@+id/view_publish"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="发起的约会"/>
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_arrows_right"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray"/>
+            <LinearLayout
+                android:id="@+id/view_collection"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="收藏的约会"/>
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_arrows_right"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray"/>
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp">
-            <TextView
-                android:layout_width="96dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="学  校："/>
-            <TextView
-                android:id="@+id/school"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                tool:text="山东蓝翔"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp">
-            <TextView
-                android:layout_width="96dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="兴趣标签："/>
-            <TextView
-                android:id="@+id/hobby"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                tool:text="吃货 运动狂魔"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray"/>
-        <LinearLayout
-            android:id="@+id/view_publish"
-            android:layout_width="match_parent"
-            android:layout_height="48dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="发起的约会"/>
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_arrows_right"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray"/>
-        <LinearLayout
-            android:id="@+id/view_collection"
-            android:layout_width="match_parent"
-            android:layout_height="48dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="收藏的约会"/>
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_arrows_right"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/darker_gray"/>
-    </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
+        android:id="@+id/container_bottom"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true">

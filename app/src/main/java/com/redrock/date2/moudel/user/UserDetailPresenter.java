@@ -20,8 +20,11 @@ public class UserDetailPresenter extends Presenter<UserDetailActivity> {
         UserModel.getInstance().getUserDetail(getView().getIntent().getStringExtra("id"), new DataCallback<UserDetail>() {
             @Override
             public void success(String info, UserDetail data) {
-                if (getView()!=null)
+                if (getView() != null){
                     getView().setUserDetail(userDetail = data);
+                    getView().setIsUser(userDetail.getId().equals(UserModel.getInstance().getAccount().getId()));
+                }
+
             }
         });
     }
@@ -29,7 +32,10 @@ public class UserDetailPresenter extends Presenter<UserDetailActivity> {
     @Override
     protected void onCreateView(UserDetailActivity view) {
         super.onCreateView(view);
-        if (userDetail!=null)getView().setUserDetail(userDetail);
+        if (userDetail!=null){
+            getView().setUserDetail(userDetail);
+            getView().setIsUser(userDetail.getId().equals(UserModel.getInstance().getAccount().getId()));
+        }
     }
 
     public void startAttention(){

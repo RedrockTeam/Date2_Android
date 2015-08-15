@@ -6,16 +6,47 @@ package com.redrock.date2.model.bean;
 public class Comment {
     private String authorFace;
     private String authorName;
-    private String content;
-    private long time;
+    private int authorGender;
+    private int authorAge;
+    private boolean isCertification;
 
-    public Comment(String authorFace, String authorName, String content, long time) {
+    public Comment(String authorFace, String authorName, int authorGender, int authorAge, boolean isCertification, String content, long time) {
         this.authorFace = authorFace;
         this.authorName = authorName;
+        this.authorGender = authorGender;
+        this.authorAge = authorAge;
+        this.isCertification = isCertification;
         this.content = content;
         this.time = time;
     }
 
+    private String content;
+    private long time;
+
+
+    public int getAuthorGender() {
+        return authorGender;
+    }
+
+    public void setAuthorGender(int authorGender) {
+        this.authorGender = authorGender;
+    }
+
+    public int getAuthorAge() {
+        return authorAge;
+    }
+
+    public void setAuthorAge(int authorAge) {
+        this.authorAge = authorAge;
+    }
+
+    public boolean isCertification() {
+        return isCertification;
+    }
+
+    public void setIsCertification(boolean isCertification) {
+        this.isCertification = isCertification;
+    }
     public String getAuthorFace() {
         return authorFace;
     }

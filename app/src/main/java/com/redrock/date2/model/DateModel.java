@@ -1,10 +1,12 @@
 package com.redrock.date2.model;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 
 import com.jude.beam.model.AbsModel;
 import com.jude.utils.JFileManager;
+import com.jude.utils.JUtils;
 import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.Banner;
 import com.redrock.date2.model.bean.Comment;
@@ -23,6 +25,10 @@ import java.util.Random;
  */
 public class DateModel extends AbsModel {
     public static final String DATE_TYPE_FILE = "dateType";
+    public static final String FILTRATE_TYPE = "filtrate_style";
+    public static final String FILTRATE_USER = "filtrate_user";
+    public static final String FILTRATE_TIME = "filtrate_time";
+    public static final String FILTRATE_COST = "filtrate_cost";
     private DateType[] mDateType;
     public static DateModel getInstance() {
         return getInstance(DateModel.class);
@@ -64,7 +70,7 @@ public class DateModel extends AbsModel {
 
     public void setDateType(DateType[] types){
         mDateType = types;
-        JFileManager.getInstance().getFolder(Dir.Object).writeObjectToFile(types,DATE_TYPE_FILE);
+        JFileManager.getInstance().getFolder(Dir.Object).writeObjectToFile(types, DATE_TYPE_FILE);
     }
 
     public void publishDate(DateEdit dateEdit,StatusCallback callback){
@@ -81,6 +87,20 @@ public class DateModel extends AbsModel {
     public void getComments(String id,int page,DataCallback<Comment[]> callback){
         new Handler().postDelayed(() -> callback.success("", createVirtualComments(20)), 1000);
     }
+
+    public void saveFiltrate(int style,int user,int time,int cost){
+        SharedPreferences.Editor editor = JUtils.getSharedPreference().edit();
+        editor.putInt(FILTRATE_TYPE,style);
+        editor.putInt(FILTRATE_USER,user);
+        editor.putInt(FILTRATE_TIME,time);
+        editor.putInt(FILTRATE_COST,cost);
+        editor.apply();
+        JUtils.Log("old:"+style+" new"+getFiltrateStyle());
+    }
+    public int getFiltrateStyle(){return JUtils.getSharedPreference().getInt(FILTRATE_TYPE,0);}
+    public int getFiltrateUser(){return JUtils.getSharedPreference().getInt(FILTRATE_USER,0);}
+    public int getFiltrateTime(){return JUtils.getSharedPreference().getInt(FILTRATE_TIME,0);}
+    public int getFiltrateCost(){return JUtils.getSharedPreference().getInt(FILTRATE_COST,0);}
 
     public DateDetail createVirtualDateDetail(){
         return new DateDetail(3,
@@ -106,11 +126,12 @@ public class DateModel extends AbsModel {
     }
 
     public Comment[] createVirtualComments(int count){
+        Random r= new Random();
         Comment[] comments = new Comment[count];
         for (int i = 0; i < comments.length; i++) {
             comments[i] = new Comment(
                     "http://i2.hdslb.com/account/face/12278054/2a44a170/myface.png",
-                    "宋伊雪",
+                    "宋伊雪",r.nextInt(2),2010+r.nextInt(6),true,
                     "前几天下了一场雨，我站在阳台看着雨后的城市，落日是粉红色的，突然想起曾有个姑娘跟我说想要看到粉红色的太阳，心里一阵触动。",
                     1439270903
             );
@@ -123,7 +144,7 @@ public class DateModel extends AbsModel {
         Random r= new Random();
         for (int i = 0; i < dates.length; i++) {
             dates[i] = new Date("http://i2.hdslb.com/account/face/5871456/ccf106b0/myface.png",
-                    "Jude",
+                    "Jude",r.nextInt(2),2010+r.nextInt(6),true,
                     "当电影遇到移动短视频，又一轮内容UGC在爆发",
                     1439081137,
                     r.nextInt(DateModel.getInstance().getDateType().length-2)+1,

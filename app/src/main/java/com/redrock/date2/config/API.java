@@ -6,6 +6,7 @@ package com.redrock.date2.config;
 public class API {
     public static final class URL{
 
+        public static String QiniuToken = "";
     }
 
     public static class KEY {

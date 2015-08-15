@@ -21,11 +21,36 @@
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_height="20dp"
+            android:gravity="center"
+            style="@style/TextAppearance.AppCompat.Subhead"
             tool:text="Jude"
             android:layout_toRightOf="@+id/face"/>
 
+        <com.redrock.date2.utils.TAGView
+            android:id="@+id/tag_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/name"
+            android:layout_alignTop="@+id/name"
+            android:layout_alignBottom="@+id/name"
+            app:tag_icon="@drawable/ic_male_focus"
+            app:tag_text="大三"
+            app:tag_color="@color/orange"
+            />
+        <com.redrock.date2.utils.TAGView
+            android:id="@+id/tag_certification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/tag_user"
+            android:layout_alignTop="@+id/name"
+            android:layout_alignBottom="@+id/name"
+            app:tag_icon="@drawable/ic_certification"
+            app:tag_text="认证"
+            app:tag_color="@android:color/holo_green_light"
+            />
         <TextView
             android:id="@+id/post_time"
             android:layout_width="wrap_content"
@@ -36,16 +61,12 @@
             android:layout_toRightOf="@+id/face"
             android:layout_alignBottom="@+id/face"/>
 
-        <TextView
+        <com.redrock.date2.utils.TAGView
             android:id="@+id/style"
             android:layout_width="48dp"
             android:layout_height="24dp"
-            tool:text="吃饭"
             android:layout_below="@+id/face"
-            android:gravity="center"
-            android:layout_marginTop="16dp"
-            android:textColor="@android:color/white"
-            android:background="@drawable/circular_rect"/>
+            android:layout_marginTop="16dp"/>
 
         <TextView
             android:id="@+id/title"

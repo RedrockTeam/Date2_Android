@@ -13,6 +13,7 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.model.bean.Action;
+import com.redrock.date2.utils.TAGView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -34,7 +35,7 @@ public class ActionViewHolder extends BaseViewHolder<Action> {
     @InjectView(R.id.title)
     TextView title;
     @InjectView(R.id.tag)
-    TextView tag;
+    TAGView tag;
     @InjectView(R.id.ic_person)
     ImageView icPerson;
 

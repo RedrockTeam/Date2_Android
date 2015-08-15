@@ -3,6 +3,7 @@ package com.redrock.date2.moudel.date;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -20,6 +21,8 @@ import com.redrock.date2.model.bean.User;
 import com.redrock.date2.moudel.user.UserListActivity;
 import com.redrock.date2.utils.LinearWrapContentRecyclerView;
 import com.redrock.date2.utils.RecentDateFormat;
+import com.redrock.date2.utils.TAGView;
+import com.redrock.date2.utils.YearAnalysis;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -70,6 +73,10 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
     LinearLayout viewMember;
     @InjectView(R.id.view_comment)
     LinearLayout viewComment;
+    @InjectView(R.id.tag_user)
+    TAGView tagUser;
+    @InjectView(R.id.tag_certification)
+    TAGView tagCertification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +90,12 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
             face.setImageURI(Uri.parse(dateDetail.getAuthor().getFace()));
         name.setText(dateDetail.getAuthor().getName());
         title.setText(dateDetail.getTitle());
+        tagUser.setText(YearAnalysis.analysis(dateDetail.getAuthor().getAge()));
+        tagUser.setIcon(dateDetail.getAuthor().getGender() == 1 ? R.drawable.ic_male_white : R.drawable.ic_female_white);
+        tagUser.setBackgroundColor(getResources().getColor(dateDetail.getAuthor().getGender() == 1 ? R.color.blue : R.color.pink));
+
+        tagCertification.setVisibility(dateDetail.getAuthor().isCertification()? View.VISIBLE:View.INVISIBLE);
+
         timePost.setText(new JTimeTransform(dateDetail.getPostTime()).toString(new RecentDateFormat()));
         time.setText("· " + new JTimeTransform(dateDetail.getTime()).toString(new RecentDateFormat()));
         costType.setText("· " + Constant.COST_TYPE[dateDetail.getCostType()]);
@@ -107,7 +120,7 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
         if (dateDetail.getComments() != null) {
             commentCount.setText(dateDetail.getComments().length + "条评论");
             commentList.setAdapter(new CommentAdapter(DateDetailActivity.this, dateDetail.getComments()));
-            viewComment.setOnClickListener(v->{
+            viewComment.setOnClickListener(v -> {
                 Intent i = new Intent(this, CommentActivity.class);
                 startActivity(i);
             });

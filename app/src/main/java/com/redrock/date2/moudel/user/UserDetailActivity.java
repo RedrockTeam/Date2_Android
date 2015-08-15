@@ -1,12 +1,17 @@
 package com.redrock.date2.moudel.user;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.model.bean.UserDetail;
@@ -52,16 +57,23 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
     LinearLayout viewFans;
     @InjectView(R.id.container)
     LinearLayout container;
+    @InjectView(R.id.gender)
+    ImageView gender;
+    @InjectView(R.id.age)
+    TextView age;
+
+    private boolean isUser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_detail);
         ButterKnife.inject(this);
-        viewAttention.setOnClickListener(v->getPresenter().startAttention());
-        viewFans.setOnClickListener(v->getPresenter().startFans());
-        viewPublish.setOnClickListener(v->getPresenter().startJoinDate());
-        viewCollection.setOnClickListener(v->getPresenter().startCollection());
+        viewAttention.setOnClickListener(v -> getPresenter().startAttention());
+        viewFans.setOnClickListener(v -> getPresenter().startFans());
+        viewPublish.setOnClickListener(v -> getPresenter().startJoinDate());
+        viewCollection.setOnClickListener(v -> getPresenter().startCollection());
+        JUtils.Log("onCreate");
     }
 
     public void setUserDetail(UserDetail userDetail) {
@@ -75,6 +87,28 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         attentionCount.setText(userDetail.getAttentionCount());
         fansCount.setText(userDetail.getFansCount());
         charmValue.setText(userDetail.getCharmValue());
+        gender.setImageResource(userDetail.getGender() == 1 ? R.drawable.ic_male_focus : R.drawable.ic_male_unfocus);
+        age.setText(userDetail.getAge() + "级");
     }
 
+
+    public void setIsUser(boolean isUser){
+        this.isUser = isUser;
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        JUtils.Log("onCreateOptionsMenu");
+        getMenuInflater().inflate(R.menu.menu_edit,menu);
+        return isUser;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.edit){
+            startActivity(new Intent(this,UserEditActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

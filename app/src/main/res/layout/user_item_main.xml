@@ -19,16 +19,39 @@
         android:id="@+id/name"
         android:layout_toRightOf="@id/face"
         tool:text="宋仁投"
-        android:layout_marginTop="8dp"
+        style="@style/Base.TextAppearance.AppCompat.Subhead"
         android:layout_alignTop="@id/face"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:gravity="center"
+        android:layout_height="24dp" />
+    <com.redrock.date2.utils.TAGView
+        android:id="@+id/tag_user"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignTop="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/name"
+        />
+    <com.redrock.date2.utils.TAGView
+        android:id="@+id/tag_certification"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_toRightOf="@+id/tag_user"
+        android:layout_marginLeft="16dp"
+        android:layout_alignTop="@+id/name"
+        android:layout_alignBottom="@+id/name"
+        app:tag_icon="@drawable/ic_certification"
+        app:tag_color="@android:color/holo_green_light"
+        app:tag_text="认证"
+        />
     <TextView
         android:id="@+id/sign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_toRightOf="@+id/face"
+        android:layout_marginTop="8dp"
         android:singleLine="true"
         android:ellipsize="end"
         tool:text="我走的那天，她去机场送我，我当时没忍住，终于表白了，姑娘当时没说啥，只默默地把行李递给我，把头埋在围巾里，红着脸。"/>

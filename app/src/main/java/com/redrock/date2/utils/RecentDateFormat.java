@@ -3,7 +3,17 @@ package com.redrock.date2.utils;
 import com.jude.utils.JTimeTransform;
 
 public class RecentDateFormat implements JTimeTransform.DateFormat{
-          @Override
+    private String lastFormat;
+
+    public RecentDateFormat() {
+        this("MM-dd");
+    }
+
+    public RecentDateFormat(String lastFormat) {
+        this.lastFormat = lastFormat;
+    }
+
+    @Override
           public String format(JTimeTransform date, long delta) {
               if (delta>0){
                   if (delta / JTimeTransform.SECOND < 1){
@@ -17,7 +27,7 @@ public class RecentDateFormat implements JTimeTransform.DateFormat{
                   }else if (delta / JTimeTransform.DAY < 4 && new JTimeTransform().getDay() == new JTimeTransform(date.getTimestamp()+JTimeTransform.DAY*2).getDay()){
                       return "前天"+date.toString("HH:mm");
                   }else{
-                      return date.toString("yyyy/MM/dd  hh:mm");
+                      return date.toString(lastFormat);
                   }
               }else{
                   delta = -delta;
@@ -32,7 +42,7 @@ public class RecentDateFormat implements JTimeTransform.DateFormat{
                   }else if (delta / JTimeTransform.DAY > -4 && new JTimeTransform().getDay() == new JTimeTransform(date.getTimestamp()-JTimeTransform.DAY*2).getDay()){
                       return "后天"+date.toString("HH:mm");
                   }else{
-                      return date.toString("yyyy/MM/dd  hh:mm");
+                      return date.toString(lastFormat);
                   }
               }
           }
