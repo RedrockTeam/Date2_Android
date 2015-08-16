@@ -127,7 +127,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:textColor="@android:color/black"
+                        android:textColor="@android:color/darker_gray"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
                         android:gravity="center_vertical"/>
@@ -168,7 +168,7 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/darker_gray"/>
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="match_parent"

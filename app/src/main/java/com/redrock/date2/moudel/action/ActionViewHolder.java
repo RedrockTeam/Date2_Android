@@ -13,6 +13,7 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.model.bean.Action;
+import com.redrock.date2.moudel.date.CommentActivity;
 import com.redrock.date2.utils.TAGView;
 
 import butterknife.ButterKnife;
@@ -42,6 +43,13 @@ public class ActionViewHolder extends BaseViewHolder<Action> {
     public ActionViewHolder(ViewGroup parent) {
         super(parent, R.layout.action_item_main);
         ButterKnife.inject(this, itemView);
+        comment.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), CommentActivity.class);
+            v.getContext().startActivity(i);
+        });
+        itemView.setOnClickListener(v -> {
+            v.getContext().startActivity(new Intent(v.getContext(), ActionDetailActivity.class));
+        });
     }
 
     @Override
@@ -59,8 +67,5 @@ public class ActionViewHolder extends BaseViewHolder<Action> {
         }else{
             tag.setVisibility(View.INVISIBLE);
         }
-        itemView.setOnClickListener(v -> {
-            v.getContext().startActivity(new Intent(v.getContext(), ActionDetailActivity.class));
-        });
     }
 }

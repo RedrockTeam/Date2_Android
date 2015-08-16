@@ -15,9 +15,11 @@ public class ActionDetailPresenter extends Presenter<ActionDetailActivity> {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        getView().addLoadingView();
         ActionModel.getInstance().getActionDetail(getView().getIntent().getStringExtra("id"), new DataCallback<ActionDetail>() {
             @Override
             public void success(String info, ActionDetail data) {
+                getView().removeLoadingView();
                 getView().setActionDetail(detail = data);
             }
         });

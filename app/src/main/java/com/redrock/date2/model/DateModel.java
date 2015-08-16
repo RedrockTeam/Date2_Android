@@ -95,7 +95,6 @@ public class DateModel extends AbsModel {
         editor.putInt(FILTRATE_TIME,time);
         editor.putInt(FILTRATE_COST,cost);
         editor.apply();
-        JUtils.Log("old:"+style+" new"+getFiltrateStyle());
     }
     public int getFiltrateStyle(){return JUtils.getSharedPreference().getInt(FILTRATE_TYPE,0);}
     public int getFiltrateUser(){return JUtils.getSharedPreference().getInt(FILTRATE_USER,0);}
@@ -144,7 +143,7 @@ public class DateModel extends AbsModel {
         Random r= new Random();
         for (int i = 0; i < dates.length; i++) {
             dates[i] = new Date("http://i2.hdslb.com/account/face/5871456/ccf106b0/myface.png",
-                    "Jude",r.nextInt(2),2010+r.nextInt(6),true,
+                    "Jude",r.nextInt(2),2008+r.nextInt(8),true,
                     "当电影遇到移动短视频，又一轮内容UGC在爆发",
                     1439081137,
                     r.nextInt(DateModel.getInstance().getDateType().length-2)+1,

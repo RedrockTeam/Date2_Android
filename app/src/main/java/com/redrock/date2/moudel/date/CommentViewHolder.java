@@ -1,5 +1,6 @@
 package com.redrock.date2.moudel.date;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.utils.JTimeTransform;
 import com.redrock.date2.R;
 import com.redrock.date2.model.bean.Comment;
+import com.redrock.date2.moudel.user.UserDetailActivity;
 import com.redrock.date2.utils.RecentDateFormat;
 import com.redrock.date2.utils.TAGView;
 import com.redrock.date2.utils.YearAnalysis;
@@ -34,13 +36,26 @@ public class CommentViewHolder extends BaseViewHolder<Comment> {
     @InjectView(R.id.tag_certification)
     TAGView tagCertification;
 
+    private Comment data;
+
     public CommentViewHolder(ViewGroup parent) {
         super(parent, R.layout.date_item_comment);
         ButterKnife.inject(this, itemView);
+        face.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), UserDetailActivity.class);
+            i.putExtra("id", "id");//TODO 假数据
+            v.getContext().startActivity(i);
+        });
+        name.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), UserDetailActivity.class);
+            i.putExtra("id", "id");//TODO 假数据
+            v.getContext().startActivity(i);
+        });
     }
 
     @Override
     public void setData(Comment data) {
+        this.data = data;
         if (data.getAuthorFace() != null) {
             face.setImageURI(Uri.parse(data.getAuthorFace()));
         }

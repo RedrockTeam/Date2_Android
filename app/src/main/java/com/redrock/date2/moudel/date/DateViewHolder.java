@@ -15,6 +15,7 @@ import com.redrock.date2.R;
 import com.redrock.date2.config.Constant;
 import com.redrock.date2.model.DateModel;
 import com.redrock.date2.model.bean.Date;
+import com.redrock.date2.moudel.user.UserDetailActivity;
 import com.redrock.date2.utils.RecentDateFormat;
 import com.redrock.date2.utils.TAGView;
 import com.redrock.date2.utils.YearAnalysis;
@@ -59,13 +60,41 @@ public class DateViewHolder extends BaseViewHolder<Date> {
     @InjectView(R.id.tag_certification)
     TAGView tagCertification;
 
+    Date data;
+    @InjectView(R.id.ic_person)
+    ImageView icPerson;
+    @InjectView(R.id.ic_comment)
+    ImageView icComment;
+
     public DateViewHolder(ViewGroup parent) {
         super(parent, R.layout.date_item_main);
         ButterKnife.inject(this, itemView);
+        comment.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), CommentActivity.class);
+            v.getContext().startActivity(i);
+        });
+        icComment.setOnClickListener(v -> {
+            Intent i = new Intent(v.getContext(), CommentActivity.class);
+            v.getContext().startActivity(i);
+        });
+        face.setOnClickListener(v->{
+            Intent i = new Intent(v.getContext(), UserDetailActivity.class);
+            i.putExtra("id", "id");//TODO 假数据
+            v.getContext().startActivity(i);
+        });
+        name.setOnClickListener(v->{
+            Intent i = new Intent(v.getContext(), UserDetailActivity.class);
+            i.putExtra("id", "id");//TODO 假数据
+            v.getContext().startActivity(i);
+        });
+        itemView.setOnClickListener(v -> {
+            v.getContext().startActivity(new Intent(v.getContext(), DateDetailActivity.class));
+        });
     }
 
     @Override
     public void setData(Date data) {
+        this.data = data;
         if (data.getAuthorFace() != null)
             face.setImageURI(Uri.parse(data.getAuthorFace()));
         name.setText(data.getAuthorName());
@@ -82,10 +111,10 @@ public class DateViewHolder extends BaseViewHolder<Date> {
         tagUser.setText(YearAnalysis.analysis(data.getAuthorAge()));
         tagUser.setBackgroundColor(itemView.getContext().getResources().getColor(data.getAuthorGender() == 1 ? R.color.blue : R.color.pink));
 
-        tagCertification.setVisibility(data.isCertification()? View.VISIBLE:View.INVISIBLE);
+        tagCertification.setVisibility(data.isCertification() ? View.VISIBLE : View.INVISIBLE);
 
         style.setText(DateModel.getInstance().findDateTypeById(data.getType()).getName());
         style.setBackgroundColor(Color.parseColor(Constant.TYPE_COLOR[data.getType() % DateModel.getInstance().getDateType().length]));
-        itemView.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), DateDetailActivity.class)));
+
     }
 }

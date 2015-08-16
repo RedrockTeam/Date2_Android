@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -18,6 +19,7 @@ import com.redrock.date2.config.Constant;
 import com.redrock.date2.model.UserModel;
 import com.redrock.date2.model.bean.DateDetail;
 import com.redrock.date2.model.bean.User;
+import com.redrock.date2.moudel.user.UserDetailActivity;
 import com.redrock.date2.moudel.user.UserListActivity;
 import com.redrock.date2.utils.LinearWrapContentRecyclerView;
 import com.redrock.date2.utils.RecentDateFormat;
@@ -77,6 +79,8 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
     TAGView tagUser;
     @InjectView(R.id.tag_certification)
     TAGView tagCertification;
+    @InjectView(R.id.view_user)
+    RelativeLayout viewUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +98,7 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
         tagUser.setIcon(dateDetail.getAuthor().getGender() == 1 ? R.drawable.ic_male_white : R.drawable.ic_female_white);
         tagUser.setBackgroundColor(getResources().getColor(dateDetail.getAuthor().getGender() == 1 ? R.color.blue : R.color.pink));
 
-        tagCertification.setVisibility(dateDetail.getAuthor().isCertification()? View.VISIBLE:View.INVISIBLE);
+        tagCertification.setVisibility(dateDetail.getAuthor().isCertification() ? View.VISIBLE : View.INVISIBLE);
 
         timePost.setText(new JTimeTransform(dateDetail.getPostTime()).toString(new RecentDateFormat()));
         time.setText("· " + new JTimeTransform(dateDetail.getTime()).toString(new RecentDateFormat()));
@@ -102,6 +106,12 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
         memberCount.setText("· " + dateDetail.getMemberCount() + "人");
         address.setText("· " + dateDetail.getAddress());
         content.setText("· " + dateDetail.getContent());
+
+        viewUser.setOnClickListener(v -> {
+            Intent i = new Intent(this, UserDetailActivity.class);
+            i.putExtra("id", "id");//TODO 假数据
+            startActivity(i);
+        });
 
         if (dateDetail.getMember() != null) {
             postCount.setText(dateDetail.getMember().length + "人已报名");
