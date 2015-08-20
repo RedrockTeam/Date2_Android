@@ -1,32 +1,62 @@
 package com.redrock.date2.model.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Mr.Jude on 2015/8/7.
  */
 public class Date {
+    @SerializedName("date_id")
+    private String id;
+    @SerializedName("avatar")
     private String authorFace;
+    @SerializedName("nickname")
     private String authorName;
+    @SerializedName("gender")
     private int authorGender;
+    @SerializedName("grade")
     private int authorAge;
-    private boolean isCertification;
+    @SerializedName("role_id")
+    private int authorRole;
+    @SerializedName("title")
     private String title;
+    @SerializedName("time")
     private long date;
+    @SerializedName("date_type")
     private int type;
+    @SerializedName("created_time")
     private long postTime;
+    @SerializedName("address")
     private String address;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getAuthorRole() {
+        return authorRole;
+    }
+
+    public void setAuthorRole(int authorRole) {
+        this.authorRole = authorRole;
+    }
 
     private String costType;
     private String memberCount;
     private String praiseCount;
     private String commentCount;
 
-    public Date(String authorFace, String authorName, int authorGender, int authorAge, boolean isCertification, String title, long date, int type, long postTime, String address, String costType, String memberCount, String praiseCount, String commentCount) {
+    public Date(String id, String authorFace, String authorName, int authorGender, int authorAge, int authorRole, String title, long date, int type, long postTime, String address, String costType, String memberCount, String praiseCount, String commentCount) {
+        this.id = id;
         this.authorFace = authorFace;
         this.authorName = authorName;
         this.authorGender = authorGender;
         this.authorAge = authorAge;
-        this.isCertification = isCertification;
+        this.authorRole = authorRole;
         this.title = title;
         this.date = date;
         this.type = type;
@@ -37,6 +67,7 @@ public class Date {
         this.praiseCount = praiseCount;
         this.commentCount = commentCount;
     }
+
     public int getAuthorAge() {
         return authorAge;
     }
@@ -142,12 +173,5 @@ public class Date {
         this.authorGender = authorGender;
     }
 
-    public boolean isCertification() {
 
-        return isCertification;
-    }
-
-    public void setIsCertification(boolean isCertification) {
-        this.isCertification = isCertification;
-    }
 }

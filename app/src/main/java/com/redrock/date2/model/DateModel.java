@@ -142,8 +142,8 @@ public class DateModel extends AbsModel {
         Date[] dates = new Date[count];
         Random r= new Random();
         for (int i = 0; i < dates.length; i++) {
-            dates[i] = new Date("http://i2.hdslb.com/account/face/5871456/ccf106b0/myface.png",
-                    "Jude",r.nextInt(2),2008+r.nextInt(8),true,
+            dates[i] = new Date("1","http://i2.hdslb.com/account/face/5871456/ccf106b0/myface.png",
+                    "Jude",r.nextInt(2),2008+r.nextInt(8),1,
                     "当电影遇到移动短视频，又一轮内容UGC在爆发",
                     1439081137,
                     r.nextInt(DateModel.getInstance().getDateType().length-2)+1,

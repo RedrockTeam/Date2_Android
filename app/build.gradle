@@ -11,8 +11,8 @@ android {
         applicationId "com.redrock.date2"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 11
-        versionName "0.2.1 Preview"
+        versionCode 12
+        versionName "0.2.2 Preview"
     }
     signingConfigs {
         release{
@@ -53,7 +53,7 @@ dependencies {
     compile 'io.reactivex:rxandroid:0.25.0'
     compile 'com.jude:utils:1.0.7'
     compile 'com.jude:rollviewpager:1.0.1'
-    compile 'com.jude:easyrecyclerview:1.0.3'
+    compile 'com.jude:easyrecyclerview:3.0.1'
     compile 'com.jude:imageprovider:1.0.7'
     compile 'com.jude:swipebackhelper:1.1.4'
     compile 'com.jude:beam:1.0.3'

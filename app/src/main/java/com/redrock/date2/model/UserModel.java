@@ -4,9 +4,12 @@ import android.content.Context;
 import android.os.Handler;
 
 import com.jude.beam.model.AbsModel;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 import com.jude.utils.JFileManager;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
+import com.redrock.date2.config.API;
 import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.bean.UserDetail;
@@ -58,20 +61,27 @@ public class UserModel extends AbsModel{
     }
 
     public void login(String number,String password,DataCallback<User> callback){
-        callback.add(new DataCallback<User>() {
+        RequestMap params = new RequestMap();
+        params.put("loginUser",number);
+        params.put("password", password);
+        RequestManager.getInstance().post(API.URL.Login, params, callback.add(new DataCallback<User>() {
             @Override
             public void success(String info, User data) {
                 setAccount(data);
             }
-        });
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                callback.success("", createVirtualUser());
-                //TODO 临时处理callback不能链式调用的问题
-                setAccount(createVirtualUser());
-            }
-        }, 1000);
+        }));
+    }
+
+    public void register(String account,String password,String code,String tel,int gender,String nickname){
+//        RequestMap params = new RequestMap();
+//        params.put("account",number);
+//        params.put("password", password);
+//        RequestManager.getInstance().post(API.URL.Login, params, callback.add(new DataCallback<User>() {
+//            @Override
+//            public void success(String info, User data) {
+//                setAccount(data);
+//            }
+//        }));
     }
 
     public void LoginOut(){
