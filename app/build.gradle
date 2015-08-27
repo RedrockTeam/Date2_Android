@@ -64,4 +64,5 @@ dependencies {
     compile 'cn.bingoogolapple:bga-flowlayout:1.0.0@aar'
     compile project(':SMSSDK')
     compile 'com.qiniu:qiniu-android-sdk:7.0.7'
+    compile 'com.jude:tagview:1.0.1'
 }
