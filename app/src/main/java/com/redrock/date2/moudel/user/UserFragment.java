@@ -19,7 +19,7 @@ import com.jude.beam.nucleus.factory.RequiresPresenter;
 import com.jude.beam.nucleus.view.NucleusFragment;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.model.bean.User;
+import com.redrock.date2.model.bean.UserDetail;
 import com.redrock.date2.moudel.setting.SettingActivity;
 
 import butterknife.ButterKnife;
@@ -90,7 +90,7 @@ public class UserFragment extends NucleusFragment<UserPresenter> {
         ButterKnife.reset(this);
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDetail user) {
         if (user != null) {
             if (user.getFace() != null)
                 face.setImageURI(Uri.parse(user.getFace()));

@@ -98,7 +98,7 @@ public class DateDetailActivity extends BaseActivity<DateDetailPresenter> {
         tagUser.setIcon(dateDetail.getAuthor().getGender() == 1 ? R.drawable.ic_male_white : R.drawable.ic_female_white);
         tagUser.setBackgroundColor(getResources().getColor(dateDetail.getAuthor().getGender() == 1 ? R.color.blue : R.color.pink));
 
-        tagCertification.setVisibility(dateDetail.getAuthor().isCertification() ? View.VISIBLE : View.INVISIBLE);
+        tagCertification.setVisibility(dateDetail.getAuthor().getRole()==1 ? View.VISIBLE : View.INVISIBLE);
 
         timePost.setText(new JTimeTransform(dateDetail.getPostTime()).toString(new RecentDateFormat()));
         time.setText("· " + new JTimeTransform(dateDetail.getTime()).toString(new RecentDateFormat()));

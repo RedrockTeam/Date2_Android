@@ -26,7 +26,6 @@ public class UserDetailPresenter extends Presenter<UserDetailActivity> {
                     getView().setUserDetail(userDetail = data);
                     getView().setIsUser(userDetail.getId().equals(UserModel.getInstance().getAccount().getId()));
                 }
-
             }
         });
     }

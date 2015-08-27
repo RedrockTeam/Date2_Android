@@ -1,8 +1,13 @@
 package com.redrock.date2.model.callback;
 
 
+import android.content.Intent;
+
+import com.jude.utils.JActivityManager;
 import com.jude.utils.JUtils;
 import com.redrock.date2.config.API;
+import com.redrock.date2.model.UserModel;
+import com.redrock.date2.moudel.main.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,12 +31,11 @@ public abstract class StatusCallback extends LinkCallback {
             result(status, info);
             if(status == API.CODE.SUCCEED){
                 success(info);
-            } else if (status == API.CODE.PERMISSION_DENIED){
-                authorizationFailure();
             } else {
-                failure(info);
+                failure(status,info);
             }
         } catch (JSONException e) {
+            result(-1,"数据解析错误");
             error("数据解析错误");
         }
         super.onSuccess(s);
@@ -46,11 +50,31 @@ public abstract class StatusCallback extends LinkCallback {
 
     public void result(int status, String info){}
     public abstract void success(String info);
-    public void failure(String info){
-        JUtils.Toast(info);
+    public void failure(int status,String info){
+        JUtils.Log("failure");
+        switch (status){
+            case 102:
+            case -109:
+                authorizationFailure();
+                break;
+            case 1003:
+                JUtils.Toast("您的账号已被冻结!");
+                UserModel.getInstance().LoginOut();
+                JActivityManager.getInstance().closeAllActivity();
+                break;
+            default:
+                JUtils.Toast(info);
+        }
     }
-    public void authorizationFailure(){}
     public void error(String errorInfo){
         JUtils.Toast(errorInfo);
+    }
+
+    private void authorizationFailure(){
+        JUtils.Toast("请重新登陆!");
+        UserModel.getInstance().LoginOut();
+        Intent i = new Intent(JActivityManager.getInstance().currentActivity(), MainActivity.class);
+        JActivityManager.getInstance().currentActivity().startActivity(i);
+        JActivityManager.getInstance().closeAllActivity();
     }
 }

@@ -47,7 +47,7 @@ public class UserViewHolder extends BaseViewHolder<User> {
         tagUser.setText(YearAnalysis.analysis(data.getAge()));
         tagUser.setBackgroundColor(itemView.getContext().getResources().getColor(data.getGender() == 1 ? R.color.blue : R.color.pink));
 
-        tagCertification.setVisibility(data.isCertification() ? View.VISIBLE : View.INVISIBLE);
+        tagCertification.setVisibility(data.getRole()==1 ? View.VISIBLE : View.INVISIBLE);
 
         itemView.setOnClickListener(v -> {
             Intent i = new Intent(v.getContext(), UserDetailActivity.class);

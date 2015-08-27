@@ -26,8 +26,45 @@ public class Date {
     private int type;
     @SerializedName("created_time")
     private long postTime;
-    @SerializedName("address")
+    @SerializedName("date_place")
     private String address;
+    @SerializedName("cost_type")
+    private String costType;
+    @SerializedName("apply_num")
+    private String memberCount;
+    @SerializedName("praise")
+    private String praiseCount;
+    @SerializedName("comment_num")
+    private String commentCount;
+    @SerializedName("praised")
+    private boolean praised;
+
+    public Date(String id, String authorFace, String authorName, int authorGender, int authorAge, int authorRole, String title, long date, int type, long postTime, String address, String costType, String memberCount, String praiseCount, String commentCount, boolean praised) {
+        this.id = id;
+        this.authorFace = authorFace;
+        this.authorName = authorName;
+        this.authorGender = authorGender;
+        this.authorAge = authorAge;
+        this.authorRole = authorRole;
+        this.title = title;
+        this.date = date;
+        this.type = type;
+        this.postTime = postTime;
+        this.address = address;
+        this.costType = costType;
+        this.memberCount = memberCount;
+        this.praiseCount = praiseCount;
+        this.commentCount = commentCount;
+        this.praised = praised;
+    }
+
+    public boolean isPraised() {
+        return praised;
+    }
+
+    public void setPraised(boolean praised) {
+        this.praised = praised;
+    }
 
     public String getId() {
         return id;
@@ -44,30 +81,6 @@ public class Date {
     public void setAuthorRole(int authorRole) {
         this.authorRole = authorRole;
     }
-
-    private String costType;
-    private String memberCount;
-    private String praiseCount;
-    private String commentCount;
-
-    public Date(String id, String authorFace, String authorName, int authorGender, int authorAge, int authorRole, String title, long date, int type, long postTime, String address, String costType, String memberCount, String praiseCount, String commentCount) {
-        this.id = id;
-        this.authorFace = authorFace;
-        this.authorName = authorName;
-        this.authorGender = authorGender;
-        this.authorAge = authorAge;
-        this.authorRole = authorRole;
-        this.title = title;
-        this.date = date;
-        this.type = type;
-        this.postTime = postTime;
-        this.address = address;
-        this.costType = costType;
-        this.memberCount = memberCount;
-        this.praiseCount = praiseCount;
-        this.commentCount = commentCount;
-    }
-
     public int getAuthorAge() {
         return authorAge;
     }

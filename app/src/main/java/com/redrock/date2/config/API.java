@@ -5,7 +5,7 @@ package com.redrock.date2.config;
  */
 public class API {
     public static final class URL{
-        public static final String BASEURL = "http://123.56.225.103/api/index.php?s=/";
+        public static final String BASEURL = "http://123.56.225.103/api/index.php?s=/api/";
 
         public static final String Register = BASEURL+"public/register";
         public static final String Login = BASEURL+"public/login";

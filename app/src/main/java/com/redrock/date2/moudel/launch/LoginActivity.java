@@ -10,6 +10,7 @@ import com.jude.beam.nucleus.factory.RequiresPresenter;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.app.BaseActivity;
+import com.redrock.date2.model.bean.Account;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -38,6 +39,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
         ButterKnife.inject(this);
         register.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
         login.setOnClickListener(v -> checkInput());
+    }
+
+    public void setAccount(Account account){
+        phone.setText(account.getNumber());
+        password.setText(account.getPassword());
     }
 
     public void checkInput(){

@@ -1,28 +1,37 @@
 package com.redrock.date2.model.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
  * Created by zhuchenxi on 15/8/2.
  */
 public class User implements Serializable{
+    @SerializedName("uid")
     private String id;
+    @SerializedName("avatar")
     private String face;
+    @SerializedName("nickname")
     private String name;
+    @SerializedName("signature")
     private String sign;
+    @SerializedName("gender")
     private int gender;
+    @SerializedName("a")
+    private int age;
+    @SerializedName("role_id")
+    private int role;
 
 
-    public User(String id, String face, String name, String sign, int gender, int age, boolean isCertification, String attentionCount, String fansCount) {
+    public User(String id, String face, String name, String sign, int gender, int age, int role) {
         this.id = id;
         this.face = face;
         this.name = name;
         this.sign = sign;
         this.gender = gender;
         this.age = age;
-        this.isCertification = isCertification;
-        this.attentionCount = attentionCount;
-        this.fansCount = fansCount;
+        this.role = role;
     }
 
     public int getGender() {
@@ -42,18 +51,13 @@ public class User implements Serializable{
         this.age = age;
     }
 
-    public boolean isCertification() {
-        return isCertification;
+    public int isCertification() {
+        return role;
     }
 
-    public void setIsCertification(boolean isCertification) {
-        this.isCertification = isCertification;
+    public void setIsCertification(int role) {
+        this.role = role;
     }
-
-    private int age;
-    private boolean isCertification;
-    private String attentionCount;
-    private String fansCount;
 
     public String getId() {
         return id;
@@ -79,6 +83,14 @@ public class User implements Serializable{
         this.name = name;
     }
 
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
     public String getSign() {
         return sign;
     }
@@ -87,19 +99,4 @@ public class User implements Serializable{
         this.sign = sign;
     }
 
-    public String getAttentionCount() {
-        return attentionCount;
-    }
-
-    public void setAttentionCount(String attentionCount) {
-        this.attentionCount = attentionCount;
-    }
-
-    public String getFansCount() {
-        return fansCount;
-    }
-
-    public void setFansCount(String fansCount) {
-        this.fansCount = fansCount;
-    }
 }

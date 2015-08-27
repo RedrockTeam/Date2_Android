@@ -64,6 +64,7 @@ public class DateListFragment extends NucleusFragment<DateListPresenter> {
                 View view = LayoutInflater.from(getActivity()).inflate(R.layout.date_banner, viewGroup, false);
                 RollPagerView vp = (RollPagerView) view.findViewById(R.id.view_pager);
                 vp.setAdapter(new BannerAdapter());
+
                 return view;
             }
 

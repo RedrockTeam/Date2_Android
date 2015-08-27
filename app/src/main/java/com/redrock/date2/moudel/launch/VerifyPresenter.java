@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.jude.beam.nucleus.manager.Presenter;
 import com.jude.utils.JUtils;
+import com.redrock.date2.model.UserModel;
+import com.redrock.date2.model.callback.StatusCallback;
 
 import cn.smssdk.gui.SMSManager;
 
@@ -37,7 +39,18 @@ public class VerifyPresenter extends Presenter<VerifyActivity> {
     }
 
     public void send(String code,String password){
-        JUtils.Toast("= =。等接口");
+        getView().showProgress("注册中");
+        UserModel.getInstance().register(phone, password, code, gender, name, new StatusCallback() {
+            @Override
+            public void success(String info) {
+                getView().finish();
+            }
+
+            @Override
+            public void result(int status, String info) {
+                getView().dismissProgress();
+            }
+        });
     }
 
 

@@ -150,7 +150,7 @@ public class DateModel extends AbsModel {
                     1439000137,
                     "工信部已经推行了很久的“手机实名制”",
                     "AA制",
-                    "3","5","8");
+                    "3","5","8",true);
         }
         return dates;
     }

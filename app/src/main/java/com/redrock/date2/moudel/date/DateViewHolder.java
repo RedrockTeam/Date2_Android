@@ -111,7 +111,7 @@ public class DateViewHolder extends BaseViewHolder<Date> {
         tagUser.setText(YearAnalysis.analysis(data.getAuthorAge()));
         tagUser.setBackgroundColor(itemView.getContext().getResources().getColor(data.getAuthorGender() == 1 ? R.color.blue : R.color.pink));
 
-        tagCertification.setVisibility(data.isCertification() ? View.VISIBLE : View.INVISIBLE);
+        tagCertification.setVisibility(data.getAuthorRole()==1 ? View.VISIBLE : View.INVISIBLE);
 
         style.setText(DateModel.getInstance().findDateTypeById(data.getType()).getName());
         style.setBackgroundColor(Color.parseColor(Constant.TYPE_COLOR[data.getType() % DateModel.getInstance().getDateType().length]));

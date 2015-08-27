@@ -28,7 +28,8 @@ public abstract class DataCallback<T> extends LinkCallback {
         try {
             jsonObject = new JSONObject(s);
             status = jsonObject.getInt(API.KEY.STATUS);
-            info = jsonObject.getString(API.KEY.INFO);
+            if (jsonObject.has(API.KEY.INFO))
+                info = jsonObject.getString(API.KEY.INFO);
             if (status == API.CODE.SUCCEED){
                 Gson gson = new Gson();
                 data = gson.fromJson(jsonObject.getString(API.KEY.DATA), ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]);

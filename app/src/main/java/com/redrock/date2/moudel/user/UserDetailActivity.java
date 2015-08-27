@@ -73,7 +73,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         viewFans.setOnClickListener(v -> getPresenter().startFans());
         viewPublish.setOnClickListener(v -> getPresenter().startJoinDate());
         viewCollection.setOnClickListener(v -> getPresenter().startCollection());
-        JUtils.Log("onCreate");
     }
 
     public void setUserDetail(UserDetail userDetail) {
