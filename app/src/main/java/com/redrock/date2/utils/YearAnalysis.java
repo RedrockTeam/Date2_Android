@@ -7,6 +7,7 @@ import com.jude.utils.JTimeTransform;
  */
 public class YearAnalysis {
     public static String analysis(int year){
+        if (year == 0)return "";
         int delta = new JTimeTransform().getYear()-year;
         if (new JTimeTransform().getMonth()<7)delta-=1;
         if (delta < 0)return "小屁孩";

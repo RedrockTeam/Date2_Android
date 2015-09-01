@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.jude.tagview.TAGView;
 import com.jude.utils.JTimeTransform;
 import com.redrock.date2.R;
 import com.redrock.date2.config.Constant;
@@ -17,7 +18,6 @@ import com.redrock.date2.model.DateModel;
 import com.redrock.date2.model.bean.Date;
 import com.redrock.date2.moudel.user.UserDetailActivity;
 import com.redrock.date2.utils.RecentDateFormat;
-import com.redrock.date2.utils.TAGView;
 import com.redrock.date2.utils.YearAnalysis;
 
 import butterknife.ButterKnife;
@@ -69,6 +69,7 @@ public class DateViewHolder extends BaseViewHolder<Date> {
     public DateViewHolder(ViewGroup parent) {
         super(parent, R.layout.date_item_main);
         ButterKnife.inject(this, itemView);
+        tagUser.setWillNotCacheDrawing(true);
         comment.setOnClickListener(v -> {
             Intent i = new Intent(v.getContext(), CommentActivity.class);
             v.getContext().startActivity(i);
@@ -77,12 +78,12 @@ public class DateViewHolder extends BaseViewHolder<Date> {
             Intent i = new Intent(v.getContext(), CommentActivity.class);
             v.getContext().startActivity(i);
         });
-        face.setOnClickListener(v->{
+        face.setOnClickListener(v -> {
             Intent i = new Intent(v.getContext(), UserDetailActivity.class);
             i.putExtra("id", "id");//TODO 假数据
             v.getContext().startActivity(i);
         });
-        name.setOnClickListener(v->{
+        name.setOnClickListener(v -> {
             Intent i = new Intent(v.getContext(), UserDetailActivity.class);
             i.putExtra("id", "id");//TODO 假数据
             v.getContext().startActivity(i);
@@ -107,14 +108,18 @@ public class DateViewHolder extends BaseViewHolder<Date> {
         praise.setText(data.getPraiseCount());
         comment.setText(data.getMemberCount());
 
+        tagUser.findViewById(R.id.text).setBackgroundColor(Color.BLUE);
+        tagUser.findViewById(R.id.icon).setBackgroundColor(Color.RED);
         tagUser.setIcon(data.getAuthorGender() == 1 ? R.drawable.ic_male_white : R.drawable.ic_female_white);
-        tagUser.setText(YearAnalysis.analysis(data.getAuthorAge()));
         tagUser.setBackgroundColor(itemView.getContext().getResources().getColor(data.getAuthorGender() == 1 ? R.color.blue : R.color.pink));
+        //tagUser.setText("告诉我为什么一定要写这句话，不然“大二”格子就会被“2008级”撑大。不是setText时就会重新布局吗。放心TAGView没有问题");
+        tagUser.setText(YearAnalysis.analysis(data.getAuthorAge()));
 
-        tagCertification.setVisibility(data.getAuthorRole()==1 ? View.VISIBLE : View.INVISIBLE);
+        tagCertification.setVisibility(data.getAuthorRole() == 1 ? View.VISIBLE : View.INVISIBLE);
 
         style.setText(DateModel.getInstance().findDateTypeById(data.getType()).getName());
-        style.setBackgroundColor(Color.parseColor(Constant.TYPE_COLOR[data.getType() % DateModel.getInstance().getDateType().length]));
+        int colorIndex = Math.abs(data.getType()) % DateModel.getInstance().getDateType().length;
+        style.setBackgroundColor(Color.parseColor(Constant.TYPE_COLOR[colorIndex]));
 
     }
 }

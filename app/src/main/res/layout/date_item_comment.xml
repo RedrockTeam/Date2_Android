@@ -27,7 +27,7 @@
         android:layout_marginTop="6dp"
         android:layout_height="24dp" />
 
-    <com.redrock.date2.utils.TAGView
+    <com.jude.tagview.TAGView
         android:id="@+id/tag_user"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
@@ -36,7 +36,7 @@
         android:layout_marginLeft="16dp"
         android:layout_toRightOf="@+id/name"
         />
-    <com.redrock.date2.utils.TAGView
+    <com.jude.tagview.TAGView
         android:id="@+id/tag_certification"
         android:layout_width="wrap_content"
         android:layout_height="24dp"

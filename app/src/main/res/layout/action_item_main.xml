@@ -37,7 +37,7 @@
             android:singleLine="true"
             android:ellipsize="end"
             tool:text="大圣我要给你生猴子"/>
-        <com.redrock.date2.utils.TAGView
+        <com.jude.tagview.TAGView
             android:id="@+id/tag"
             android:layout_width="wrap_content"
             android:layout_height="24dp"

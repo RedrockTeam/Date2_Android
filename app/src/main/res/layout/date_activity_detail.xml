@@ -54,14 +54,14 @@
                     android:layout_alignBaseline="@+id/name"
                     tool:text="1小时前"/>
 
-                <com.redrock.date2.utils.TAGView
+                <com.jude.tagview.TAGView
                     android:id="@+id/tag_user"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
                     android:layout_toRightOf="@+id/face"
                     android:layout_below="@+id/name"
                     />
-                <com.redrock.date2.utils.TAGView
+                <com.jude.tagview.TAGView
                     android:id="@+id/tag_certification"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"

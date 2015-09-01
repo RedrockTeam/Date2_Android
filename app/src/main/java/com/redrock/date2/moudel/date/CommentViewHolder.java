@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.jude.tagview.TAGView;
 import com.jude.utils.JTimeTransform;
 import com.redrock.date2.R;
 import com.redrock.date2.model.bean.Comment;
 import com.redrock.date2.moudel.user.UserDetailActivity;
 import com.redrock.date2.utils.RecentDateFormat;
-import com.redrock.date2.utils.TAGView;
 import com.redrock.date2.utils.YearAnalysis;
 
 import butterknife.ButterKnife;

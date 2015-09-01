@@ -74,7 +74,7 @@
                     android:gravity="center_vertical"
                     android:layout_height="match_parent"
                     style="@style/Base.TextAppearance.AppCompat.Body1"/>
-                <com.redrock.date2.utils.TAGView
+                <com.jude.tagview.TAGView
                     android:id="@+id/tag"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
