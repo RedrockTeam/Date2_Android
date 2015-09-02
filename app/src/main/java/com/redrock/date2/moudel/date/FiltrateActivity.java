@@ -26,7 +26,10 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
     BGAFlowLayout sortCost;
     @InjectView(R.id.sort_time)
     BGAFlowLayout sortTime;
+    @InjectView(R.id.sort_type)
+    BGAFlowLayout sortType;
 
+    private BRViewAdapter mTypeAdapter;
     private BRViewAdapter mStyleAdapter;
     private BRViewAdapter mUserAdapter;
     private BRViewAdapter mCostAdapter;
@@ -37,34 +40,41 @@ public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_activity_filtrate);
         ButterKnife.inject(this);
+        mTypeAdapter = new BRViewAdapter(this, sortType, getPresenter().getDateType(), index -> getPresenter().setType(index));
         mStyleAdapter = new BRViewAdapter(this, sortStyle, Constant.SORT_STYLE, index -> getPresenter().setStyle(index));
         mUserAdapter = new BRViewAdapter(this, sortUser, Constant.SORT_USER, index -> getPresenter().setUser(index));
         mCostAdapter = new BRViewAdapter(this, sortCost, Constant.SORT_COST, index -> getPresenter().setCost(index));
         mTimeAdapter = new BRViewAdapter(this, sortTime, Constant.SORT_TIME, index -> getPresenter().setTime(index));
     }
 
-    public void setSortStyle(int index){
+    public void setSortStyle(int index) {
         mStyleAdapter.setFocusIndex(index);
     }
-    public void setSortUser(int index){
+
+    public void setSortUser(int index) {
         mUserAdapter.setFocusIndex(index);
     }
-    public void setSortCost(int index){
+    public void setSortType(int index) {
+        mTypeAdapter.setFocusIndex(index);
+    }
+
+    public void setSortCost(int index) {
         mCostAdapter.setFocusIndex(index);
     }
-    public void setSortTime(int index){
+
+    public void setSortTime(int index) {
         mTimeAdapter.setFocusIndex(index);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_ok,menu);
+        getMenuInflater().inflate(R.menu.menu_ok, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.ok)getPresenter().save();
+        if (item.getItemId() == R.id.ok) getPresenter().save();
         return super.onOptionsItemSelected(item);
     }
 }

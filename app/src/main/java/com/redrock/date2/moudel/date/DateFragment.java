@@ -34,6 +34,8 @@ public class DateFragment extends NucleusFragment<DatePresenter> {
     @InjectView(R.id.vp_date)
     ViewPager vpDate;
 
+    int curTypeId;
+
     private DateFragmentListAdapter mAdapter;
 
     @Nullable
@@ -43,6 +45,23 @@ public class DateFragment extends NucleusFragment<DatePresenter> {
         View rootView = inflater.inflate(R.layout.date_fragment, container, false);
         ButterKnife.inject(this, rootView);
         setAdapter(mAdapter = new DateFragmentListAdapter(getChildFragmentManager()));
+        vpDate.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position==0)curTypeId=0;
+                else curTypeId = DateModel.getInstance().getDateTypeFather()[position-1].getId();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         return rootView;
     }
 
@@ -72,7 +91,9 @@ public class DateFragment extends NucleusFragment<DatePresenter> {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.filtrate){
-            startActivity(new Intent(getActivity(),FiltrateActivity.class));
+            Intent i = new Intent(getActivity(),FiltrateActivity.class);
+            i.putExtra("id",curTypeId);
+            startActivity(i);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -88,20 +109,20 @@ public class DateFragment extends NucleusFragment<DatePresenter> {
             Fragment f =  new DateListFragment();
             Bundle b = new Bundle();
             if (position == 0)b.putInt("id",0);
-            else b.putInt("id",DateModel.getInstance().getDateType()[position-1].getId());
+            else b.putInt("id",DateModel.getInstance().getDateTypeFather()[position-1].getId());
             f.setArguments(b);
             return f;
         }
 
         @Override
         public int getCount() {
-            return DateModel.getInstance().getDateType().length+1;
+            return DateModel.getInstance().getDateTypeFather().length+1;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0)return "热门";
-            else return DateModel.getInstance().getDateType()[position-1].getName();
+            else return DateModel.getInstance().getDateTypeFather()[position-1].getName();
         }
     }
 }

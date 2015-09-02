@@ -11,6 +11,8 @@ public class API {
         public static final String Login = BASEURL+"public/login";
         public static final String Pwdfind = BASEURL+"account/pwdfind";
         public static final String Certification = BASEURL+"account/verify";
+        public static final String DateList = BASEURL+"date/datefilter";
+        public static final String DateType = BASEURL+"public/datetype";
 
         public static String QiniuToken = "";
     }

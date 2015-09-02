@@ -89,7 +89,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
     }
 
     public void showDateTypeSelector() {
-        DateType[] types = DateModel.getInstance().getDateType();
+        DateType[] types = DateModel.getInstance().getDateTypeFather();
         String[] strings = new String[types.length];
         for (int i = 0; i < types.length; i++) {
             strings[i] = types[i].getName();

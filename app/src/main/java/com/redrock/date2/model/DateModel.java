@@ -5,8 +5,11 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 
 import com.jude.beam.model.AbsModel;
+import com.jude.http.RequestManager;
+import com.jude.http.RequestMap;
 import com.jude.utils.JFileManager;
 import com.jude.utils.JUtils;
+import com.redrock.date2.config.API;
 import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.Banner;
 import com.redrock.date2.model.bean.Comment;
@@ -14,6 +17,7 @@ import com.redrock.date2.model.bean.Date;
 import com.redrock.date2.model.bean.DateDetail;
 import com.redrock.date2.model.bean.DateEdit;
 import com.redrock.date2.model.bean.DateType;
+import com.redrock.date2.model.bean.DateTypeFather;
 import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.callback.DataCallback;
 import com.redrock.date2.model.callback.StatusCallback;
@@ -25,19 +29,20 @@ import java.util.Random;
  */
 public class DateModel extends AbsModel {
     public static final String DATE_TYPE_FILE = "dateType";
-    public static final String FILTRATE_TYPE = "filtrate_style";
+    public static final String FILTRATE_TYPE = "filtrate_type";
+    public static final String FILTRATE_STYLE = "filtrate_style";
     public static final String FILTRATE_USER = "filtrate_user";
     public static final String FILTRATE_TIME = "filtrate_time";
     public static final String FILTRATE_COST = "filtrate_cost";
-    private DateType[] mDateType;
+    private DateTypeFather[] mDateType;
     public static DateModel getInstance() {
         return getInstance(DateModel.class);
     }
 
     @Override
     protected void onAppCreateOnBackThread(Context ctx) {
-        setVirtualDateType();
-        mDateType = (DateType[]) JFileManager.getInstance().getFolder(Dir.Object).readObjectFromFile(DATE_TYPE_FILE);
+        updateDateType();
+        mDateType = (DateTypeFather[]) JFileManager.getInstance().getFolder(Dir.Object).readObjectFromFile(DATE_TYPE_FILE);
     }
 
     public void getBanner(DataCallback<Banner[]> callback){
@@ -50,28 +55,49 @@ public class DateModel extends AbsModel {
     }
 
     public void getDate(int page,int type ,DataCallback<Date[]> callback){
-        new Handler().postDelayed(() -> callback.success("",createVirtualDate(20)),1000);
+        RequestMap params = new RequestMap();
+        params.put("page",page+"");
+        params.put("sortLimit",getFiltrateStyle()+"");
+        params.put("genderLimit",getFiltrateUser()+"");
+        params.put("paymentLimit",getFiltrateCost()+"");
+        params.put("timeLimit",getFiltrateTime()+"");
+        params.put("dateType",type+"");
+        RequestManager.getInstance().post(API.URL.DateList, params, callback);
     }
 
     public void getJoinDate(DataCallback<Date[]> callback){
-        new Handler().postDelayed(() -> callback.success("",createVirtualDate(20)),1000);
+        new Handler().postDelayed(() -> callback.success("", createVirtualDate(20)), 1000);
     }
 
-    public DateType[] getDateType(){
-        return mDateType == null?new DateType[0]:mDateType;
+    public DateTypeFather[] getDateTypeFather(){
+        return mDateType == null?new DateTypeFather[0]:mDateType;
     }
 
-    public DateType findDateTypeById(int id){
-        for (DateType dateType : getDateType()) {
+    public DateTypeFather findDateTypeFatherById(int id){
+        for (DateTypeFather dateType : getDateTypeFather()) {
             if (dateType.getId() == id)return dateType;
         }
         return null;
     }
 
-    public void setDateType(DateType[] types){
+    public void setDateType(DateTypeFather[] types){
         mDateType = types;
         JFileManager.getInstance().getFolder(Dir.Object).writeObjectToFile(types, DATE_TYPE_FILE);
     }
+
+
+    public void updateDateType(){
+        RequestManager.getInstance().post(API.URL.DateType, null, new DataCallback<DateTypeFather[]>() {
+            @Override
+            public void success(String info, DateTypeFather[] data) {
+                setDateType(data);
+                for (DateTypeFather dateTypeFather : data) {
+                    JUtils.Log(dateTypeFather.getName());
+                }
+            }
+        });
+    }
+
 
     public void publishDate(DateEdit dateEdit,StatusCallback callback){
         new Handler().postDelayed(() -> {
@@ -88,15 +114,19 @@ public class DateModel extends AbsModel {
         new Handler().postDelayed(() -> callback.success("", createVirtualComments(20)), 1000);
     }
 
-    public void saveFiltrate(int style,int user,int time,int cost){
+    public void saveFiltrate(int typeFather,int type,int style,int user,int time,int cost){
         SharedPreferences.Editor editor = JUtils.getSharedPreference().edit();
-        editor.putInt(FILTRATE_TYPE,style);
+        editor.putInt(FILTRATE_TYPE + typeFather, type);
+        editor.putInt(FILTRATE_STYLE,style);
         editor.putInt(FILTRATE_USER,user);
         editor.putInt(FILTRATE_TIME,time);
-        editor.putInt(FILTRATE_COST,cost);
+        editor.putInt(FILTRATE_COST, cost);
         editor.apply();
     }
-    public int getFiltrateStyle(){return JUtils.getSharedPreference().getInt(FILTRATE_TYPE,0);}
+    public int getFiltrateType(int typeFather){
+        return JUtils.getSharedPreference().getInt(FILTRATE_TYPE+typeFather,0);
+    }
+    public int getFiltrateStyle(){return JUtils.getSharedPreference().getInt(FILTRATE_STYLE,0);}
     public int getFiltrateUser(){return JUtils.getSharedPreference().getInt(FILTRATE_USER,0);}
     public int getFiltrateTime(){return JUtils.getSharedPreference().getInt(FILTRATE_TIME,0);}
     public int getFiltrateCost(){return JUtils.getSharedPreference().getInt(FILTRATE_COST,0);}
@@ -146,11 +176,11 @@ public class DateModel extends AbsModel {
                     "Jude",r.nextInt(2),2008+r.nextInt(8),1,
                     "当电影遇到移动短视频，又一轮内容UGC在爆发",
                     1439081137,
-                    r.nextInt(DateModel.getInstance().getDateType().length-2)+1,
+                    r.nextInt(DateModel.getInstance().getDateTypeFather().length-2)+1,
                     1439000137,
                     "工信部已经推行了很久的“手机实名制”",
                     "AA制",
-                    "3","5","8",true);
+                    "3","5","8",1);
         }
         return dates;
     }

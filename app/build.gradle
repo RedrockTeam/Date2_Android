@@ -46,7 +46,7 @@ dependencies {
     compile 'com.afollestad:material-dialogs:0.7.7.0'
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:design:22.2.1'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile 'com.pnikosis:materialish-progress:1.5'
     compile 'com.google.code.gson:gson:2.3.1'
@@ -64,5 +64,5 @@ dependencies {
     compile 'cn.bingoogolapple:bga-flowlayout:1.0.0@aar'
     compile project(':SMSSDK')
     compile 'com.qiniu:qiniu-android-sdk:7.0.7'
-    compile 'com.jude:tagview:1.0.5'
+    compile 'com.jude:tagview:2.0.0'
 }

@@ -23,7 +23,7 @@ public class WriteDatePresenter extends Presenter<WriteDateActivity> {
     @Override
     protected void onCreateView(WriteDateActivity view) {
         super.onCreateView(view);
-        getView().setDateType(DateModel.getInstance().findDateTypeById(mData.getStyle()));
+        getView().setDateType(DateModel.getInstance().findDateTypeFatherById(mData.getStyle()));
     }
 
     public void setTitle(String title){

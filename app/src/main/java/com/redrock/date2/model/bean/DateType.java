@@ -1,12 +1,16 @@
 package com.redrock.date2.model.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
  * Created by Mr.Jude on 2015/8/8.
  */
 public class DateType implements Serializable{
+    @SerializedName("type_name")
     private String name;
+    @SerializedName("type_id")
     private int id;
 
     public DateType(String name, int id) {

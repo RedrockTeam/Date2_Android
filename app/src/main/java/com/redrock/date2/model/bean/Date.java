@@ -17,7 +17,7 @@ public class Date {
     @SerializedName("grade")
     private int authorAge;
     @SerializedName("role_id")
-    private int authorRole;
+    private int authorRole;//0普通用户，1实名用户
     @SerializedName("title")
     private String title;
     @SerializedName("time")
@@ -36,10 +36,10 @@ public class Date {
     private String praiseCount;
     @SerializedName("comment_num")
     private String commentCount;
-    @SerializedName("praised")
-    private boolean praised;
+    @SerializedName("praise_status")
+    private int praiseStatus;
 
-    public Date(String id, String authorFace, String authorName, int authorGender, int authorAge, int authorRole, String title, long date, int type, long postTime, String address, String costType, String memberCount, String praiseCount, String commentCount, boolean praised) {
+    public Date(String id, String authorFace, String authorName, int authorGender, int authorAge, int authorRole, String title, long date, int type, long postTime, String address, String costType, String memberCount, String praiseCount, String commentCount, int praised) {
         this.id = id;
         this.authorFace = authorFace;
         this.authorName = authorName;
@@ -55,15 +55,15 @@ public class Date {
         this.memberCount = memberCount;
         this.praiseCount = praiseCount;
         this.commentCount = commentCount;
-        this.praised = praised;
+        this.praiseStatus = praised;
     }
 
-    public boolean isPraised() {
-        return praised;
+    public int getPraiseStatus() {
+        return praiseStatus;
     }
 
-    public void setPraised(boolean praised) {
-        this.praised = praised;
+    public void setPraiseStatus(int praiseStatus) {
+        this.praiseStatus = praiseStatus;
     }
 
     public String getId() {

@@ -91,6 +91,10 @@ public class DateViewHolder extends BaseViewHolder<Date> {
         itemView.setOnClickListener(v -> {
             v.getContext().startActivity(new Intent(v.getContext(), DateDetailActivity.class));
         });
+        icPraise.setOnClickListener(v->{
+            data.setPraiseStatus(data.getPraiseStatus()==1?0:1);
+            icPraise.setImageResource(data.getPraiseStatus() == 0 ? R.drawable.ic_praise_unfocus : R.drawable.ic_praise_focus);
+        });
     }
 
     @Override
@@ -106,19 +110,17 @@ public class DateViewHolder extends BaseViewHolder<Date> {
         cost.setText(data.getCostType());
         member.setText(data.getMemberCount());
         praise.setText(data.getPraiseCount());
+        icPraise.setImageResource(data.getPraiseStatus()==0?R.drawable.ic_praise_unfocus:R.drawable.ic_praise_focus);
         comment.setText(data.getMemberCount());
 
-        tagUser.findViewById(R.id.text).setBackgroundColor(Color.BLUE);
-        tagUser.findViewById(R.id.icon).setBackgroundColor(Color.RED);
         tagUser.setIcon(data.getAuthorGender() == 1 ? R.drawable.ic_male_white : R.drawable.ic_female_white);
         tagUser.setBackgroundColor(itemView.getContext().getResources().getColor(data.getAuthorGender() == 1 ? R.color.blue : R.color.pink));
-        //tagUser.setText("告诉我为什么一定要写这句话，不然“大二”格子就会被“2008级”撑大。不是setText时就会重新布局吗。放心TAGView没有问题");
         tagUser.setText(YearAnalysis.analysis(data.getAuthorAge()));
 
         tagCertification.setVisibility(data.getAuthorRole() == 1 ? View.VISIBLE : View.INVISIBLE);
 
-        style.setText(DateModel.getInstance().findDateTypeById(data.getType()).getName());
-        int colorIndex = Math.abs(data.getType()) % DateModel.getInstance().getDateType().length;
+        style.setText(DateModel.getInstance().findDateTypeFatherById(data.getType()).getName());
+        int colorIndex = Math.abs(data.getType()) % DateModel.getInstance().getDateTypeFather().length;
         style.setBackgroundColor(Color.parseColor(Constant.TYPE_COLOR[colorIndex]));
 
     }

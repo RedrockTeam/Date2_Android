@@ -39,6 +39,7 @@ public class BRViewAdapter extends ArrayAdapter<String> {
     }
 
     public void setFocusIndex(int index){
+        if (index>=getCount())index=0;
         select(index);
     }
 
