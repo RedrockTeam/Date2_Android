@@ -9,6 +9,7 @@ import com.jude.http.RequestManager;
 import com.jude.http.RequestMap;
 import com.jude.utils.JFileManager;
 import com.jude.utils.JUtils;
+import com.redrock.date2.app.TokenParams;
 import com.redrock.date2.config.API;
 import com.redrock.date2.config.Dir;
 import com.redrock.date2.model.bean.Banner;
@@ -100,10 +101,16 @@ public class DateModel extends AbsModel {
 
 
     public void publishDate(DateEdit dateEdit,StatusCallback callback){
-        new Handler().postDelayed(() -> {
-            callback.success("");
-            callback.result(200, "");
-        }, 1000);
+        TokenParams params = new TokenParams();
+        params.put("title",dateEdit.getTitle());
+        params.put("content",dateEdit.getContent());
+        params.put("date_time",dateEdit.getTime()+"");
+        params.put("date_place",dateEdit.getAddress());
+        params.put("date_type",dateEdit.getStyle()+"");
+        params.put("cost_type",dateEdit.getCostType()+"");
+        params.put("gender_limit",dateEdit.getGender()+"");
+        params.put("people_limit",dateEdit.getMemberCount()+"");
+        RequestManager.getInstance().post(API.URL.PublishDate,params,callback);
     }
 
     public void getDateDetail(String id,DataCallback<DateDetail> callback){

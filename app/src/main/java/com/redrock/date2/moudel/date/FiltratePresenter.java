@@ -1,8 +1,7 @@
 package com.redrock.date2.moudel.date;
 
 import android.os.Bundle;
-
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.bijection.Presenter;
 import com.redrock.date2.model.DateModel;
 import com.redrock.date2.model.bean.DateType;
 
@@ -36,8 +35,8 @@ public class FiltratePresenter extends Presenter<FiltrateActivity> {
     }
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(FiltrateActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         mDateType = getView().getIntent().getIntExtra("id",0);
     }
 

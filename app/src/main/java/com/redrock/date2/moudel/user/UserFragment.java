@@ -15,8 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
-import com.jude.beam.nucleus.view.NucleusFragment;
+import com.jude.beam.bijection.BeamFragment;
+import com.jude.beam.bijection.RequiresPresenter;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.model.bean.UserDetail;
@@ -29,7 +29,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/7.
  */
 @RequiresPresenter(UserPresenter.class)
-public class UserFragment extends NucleusFragment<UserPresenter> {
+public class UserFragment extends BeamFragment<UserPresenter> {
     @InjectView(R.id.face)
     SimpleDraweeView face;
     @InjectView(R.id.sign)

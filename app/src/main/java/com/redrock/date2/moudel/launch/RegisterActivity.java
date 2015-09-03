@@ -7,10 +7,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -20,7 +20,7 @@ import butterknife.InjectView;
  */
 
 @RequiresPresenter(RegisterPresenter.class)
-public class RegisterActivity extends BaseActivity<RegisterPresenter> {
+public class RegisterActivity extends BeamBaseActivity<RegisterPresenter> {
 
 
     @InjectView(R.id.img_male)

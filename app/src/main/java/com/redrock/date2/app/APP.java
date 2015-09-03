@@ -4,10 +4,12 @@ import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.jude.beam.Beam;
+import com.jude.beam.expansion.list.ListConfig;
 import com.jude.http.RequestManager;
 import com.jude.utils.JFileManager;
 import com.jude.utils.JUtils;
 import com.redrock.date2.BuildConfig;
+import com.redrock.date2.R;
 import com.redrock.date2.config.Dir;
 
 /**
@@ -24,5 +26,7 @@ public class APP extends Application{
         RequestManager.getInstance().init(this);
         RequestManager.getInstance().setDebugMode(BuildConfig.DEBUG, "DateNet");
         Beam.init(this);
+        Beam.registerActivityLifetCyclerDelegate(ActivityDelegate.class);
+        ListConfig.setDefaultListConfig(new ListConfig().setRefreshAble(true).setContainerLayoutRes(R.layout.activity_recyclerview));
     }
 }

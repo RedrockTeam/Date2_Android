@@ -2,7 +2,7 @@ package com.redrock.date2.moudel.launch;
 
 import android.os.Bundle;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.bijection.Presenter;
 import com.jude.utils.JUtils;
 import com.redrock.date2.model.UserModel;
 import com.redrock.date2.model.callback.StatusCallback;
@@ -18,8 +18,8 @@ public class VerifyPresenter extends Presenter<VerifyActivity> {
     private String name;
     private int gender;
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(VerifyActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         JUtils.Log("Presenter Begin");
         phone = getView().getIntent().getStringExtra("phone");
         name = getView().getIntent().getStringExtra("name");
@@ -39,7 +39,7 @@ public class VerifyPresenter extends Presenter<VerifyActivity> {
     }
 
     public void send(String code,String password){
-        getView().showProgress("注册中");
+        getView().getExpansion().showProgressDialog("注册中");
         UserModel.getInstance().register(phone, password, code, gender, name, new StatusCallback() {
             @Override
             public void success(String info) {
@@ -48,7 +48,7 @@ public class VerifyPresenter extends Presenter<VerifyActivity> {
 
             @Override
             public void result(int status, String info) {
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
             }
         });
     }

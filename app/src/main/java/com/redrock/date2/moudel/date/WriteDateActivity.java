@@ -9,12 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.library.imageprovider.Utils;
 import com.jude.utils.JTimeTransform;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.config.Constant;
 import com.redrock.date2.model.bean.DateType;
 import com.redrock.date2.utils.RecentDateFormat;
@@ -31,7 +31,7 @@ import butterknife.InjectView;
  */
 
 @RequiresPresenter(WriteDatePresenter.class)
-public class WriteDateActivity extends BaseActivity<WriteDatePresenter> {
+public class WriteDateActivity extends BeamBaseActivity<WriteDatePresenter> {
 
     @InjectView(R.id.tv_style)
     TextView tvStyle;
@@ -107,7 +107,7 @@ public class WriteDateActivity extends BaseActivity<WriteDatePresenter> {
                 .title("输入标题")
                 .inputType(InputType.TYPE_CLASS_TEXT)
                 .inputMaxLength(30)
-                .input("", "", new MaterialDialog.InputCallback() {
+                .input("", tvTitle.getText(), new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         if (input.toString().trim().isEmpty()) {
@@ -125,7 +125,7 @@ public class WriteDateActivity extends BaseActivity<WriteDatePresenter> {
                 .title("输入约会人数")
                 .inputMaxLength(2)
                 .inputType(InputType.TYPE_CLASS_NUMBER)
-                .input("", "", new MaterialDialog.InputCallback() {
+                .input("", tvMemberCount.getText(), new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         try {
@@ -186,7 +186,7 @@ public class WriteDateActivity extends BaseActivity<WriteDatePresenter> {
         new MaterialDialog.Builder(this)
                 .title("输入约会地点")
                 .inputType(InputType.TYPE_CLASS_TEXT)
-                .input("", "", new MaterialDialog.InputCallback() {
+                .input("", tvAddress.getText(), new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         if (input.toString().trim().isEmpty()) {
@@ -219,7 +219,7 @@ public class WriteDateActivity extends BaseActivity<WriteDatePresenter> {
         new MaterialDialog.Builder(this)
                 .title("输入备注")
                 .inputType(InputType.TYPE_CLASS_TEXT)
-                .input("", "", new MaterialDialog.InputCallback() {
+                .input("", tvContent.getText(), new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         tvContent.setText(input);

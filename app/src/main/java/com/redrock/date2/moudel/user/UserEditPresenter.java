@@ -3,7 +3,7 @@ package com.redrock.date2.moudel.user;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.bijection.Presenter;
 import com.jude.library.imageprovider.ImageProvider;
 import com.jude.library.imageprovider.OnImageSelectListener;
 import com.jude.utils.JUtils;
@@ -46,12 +46,12 @@ public class UserEditPresenter extends Presenter<UserEditActivity> {
         OnImageSelectListener listener = new OnImageSelectListener() {
             @Override
             public void onImageSelect() {
-                getView().showProgress("加载中");
+                getView().getExpansion().showProgressDialog("加载中");
             }
 
             @Override
             public void onImageLoaded(Uri uri) {
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
                 //开始裁剪
                 provider.corpImage(uri, 300, 300, new OnImageSelectListener() {
                     @Override
@@ -73,7 +73,7 @@ public class UserEditPresenter extends Presenter<UserEditActivity> {
 
             @Override
             public void onError() {
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
             }
         };
         switch (style){
@@ -114,7 +114,7 @@ public class UserEditPresenter extends Presenter<UserEditActivity> {
 
                     @Override
                     public void result(int status, String info) {
-                        getView().dismissProgress();
+                        getView().getExpansion().dismissProgressDialog();
                     }
                 });
             }
@@ -122,7 +122,7 @@ public class UserEditPresenter extends Presenter<UserEditActivity> {
             @Override
             public void onError() {
                 JUtils.Toast("上传失败");
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
             }
         });
     }

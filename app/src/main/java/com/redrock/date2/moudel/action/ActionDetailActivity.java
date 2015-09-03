@@ -12,11 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.data.BeamDataActivity;
 import com.jude.tagview.TAGView;
 import com.jude.utils.JTimeTransform;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.model.UserModel;
 import com.redrock.date2.model.bean.ActionDetail;
 import com.redrock.date2.model.bean.User;
@@ -34,7 +34,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/14.
  */
 @RequiresPresenter(ActionDetailPresenter.class)
-public class ActionDetailActivity extends BaseActivity<ActionDetailPresenter> {
+public class ActionDetailActivity extends BeamDataActivity<ActionDetailPresenter,ActionDetail> {
 
     @InjectView(R.id.time)
     TextView time;
@@ -74,7 +74,9 @@ public class ActionDetailActivity extends BaseActivity<ActionDetailPresenter> {
         ButterKnife.inject(this);
     }
 
-    public void setActionDetail(ActionDetail detail) {
+
+    @Override
+    public void setData(ActionDetail detail) {
         collapsingToolbar.setTitle(detail.getTitle());
         time.setText(new JTimeTransform(detail.getTime()).toString(new RecentDateFormat()));
         address.setText(detail.getAddress());

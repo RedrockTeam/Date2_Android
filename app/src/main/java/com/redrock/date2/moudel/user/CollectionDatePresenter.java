@@ -2,7 +2,7 @@ package com.redrock.date2.moudel.user;
 
 import android.os.Bundle;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.expansion.list.BeamListActivityPresenter;
 import com.redrock.date2.model.DateModel;
 import com.redrock.date2.model.bean.Date;
 import com.redrock.date2.model.callback.DataCallback;
@@ -10,22 +10,27 @@ import com.redrock.date2.model.callback.DataCallback;
 /**
  * Created by Mr.Jude on 2015/8/11.
  */
-public class CollectionDatePresenter extends Presenter<CollectionDateActivity> {
-    private Date[] dates;
+public class CollectionDatePresenter extends BeamListActivityPresenter<CollectionDateActivity,Date> {
+
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
-        DateModel.getInstance().getJoinDate(new DataCallback<Date[]>() {
-            @Override
-            public void success(String info, Date[] data) {
-                getView().addData(dates = data);
-            }
-        });
+    protected void onCreate(CollectionDateActivity view,Bundle savedState) {
+        super.onCreate(view, savedState);
+        onRefresh();
     }
 
     @Override
-    protected void onCreateView(CollectionDateActivity view) {
-        super.onCreateView(view);
-        if (dates!=null)getView().addData(dates);
+    public void onRefresh() {
+        DateModel.getInstance().getJoinDate(new DataCallback<Date[]>() {
+            @Override
+            public void success(String info, Date[] data) {
+                getAdapter().clear();
+                getAdapter().addAll(data);
+            }
+
+            @Override
+            public void error(String errorInfo) {
+                getView().showError();
+            }
+        });
     }
 }

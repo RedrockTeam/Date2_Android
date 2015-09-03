@@ -2,7 +2,7 @@ package com.redrock.date2.moudel.date;
 
 import android.os.Bundle;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.bijection.Presenter;
 import com.jude.utils.JUtils;
 import com.redrock.date2.model.DateModel;
 import com.redrock.date2.model.bean.DateEdit;
@@ -15,8 +15,8 @@ public class WriteDatePresenter extends Presenter<WriteDateActivity> {
     public DateEdit mData = new DateEdit();
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(WriteDateActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         mData.setStyle(getView().getIntent().getIntExtra("id", 0));
     }
 
@@ -80,7 +80,7 @@ public class WriteDatePresenter extends Presenter<WriteDateActivity> {
             JUtils.Toast("请输入地点");
             return ;
         }
-        getView().showProgress("发表中");
+        getView().getExpansion().showProgressDialog("发表中");
         DateModel.getInstance().publishDate(mData, new StatusCallback() {
             @Override
             public void success(String info) {
@@ -89,7 +89,7 @@ public class WriteDatePresenter extends Presenter<WriteDateActivity> {
 
             @Override
             public void result(int status, String info) {
-                getView().dismissProgress();
+                getView().getExpansion().dismissProgressDialog();
             }
         });
     }

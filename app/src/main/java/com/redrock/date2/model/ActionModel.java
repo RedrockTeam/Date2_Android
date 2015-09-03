@@ -3,6 +3,9 @@ package com.redrock.date2.model;
 import android.os.Handler;
 
 import com.jude.beam.model.AbsModel;
+import com.jude.http.RequestManager;
+import com.redrock.date2.app.TokenParams;
+import com.redrock.date2.config.API;
 import com.redrock.date2.model.bean.Action;
 import com.redrock.date2.model.bean.ActionDetail;
 import com.redrock.date2.model.bean.User;
@@ -18,12 +21,9 @@ public class ActionModel extends AbsModel {
     }
 
     public void getAction(int page,DataCallback<Action[]> callback){
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                callback.success("",createVirtualAction(20));
-            }
-        }, 1000);
+        TokenParams params = new TokenParams();
+        params.put("page",page+"");
+        RequestManager.getInstance().post(API.URL.ActionList,params,callback);
     }
 
     public void getActionDetail(String id,DataCallback<ActionDetail> callback){

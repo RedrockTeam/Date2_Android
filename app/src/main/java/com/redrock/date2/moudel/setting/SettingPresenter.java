@@ -1,6 +1,6 @@
 package com.redrock.date2.moudel.setting;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.bijection.Presenter;
 import com.redrock.date2.model.UserModel;
 
 /**

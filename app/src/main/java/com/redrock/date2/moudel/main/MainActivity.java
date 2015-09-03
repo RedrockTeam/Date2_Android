@@ -9,10 +9,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.model.DateModel;
 import com.redrock.date2.model.bean.DateType;
 import com.umeng.update.UmengUpdateAgent;
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 @RequiresPresenter(MainPresenter.class)
-public class MainActivity extends BaseActivity<MainPresenter> {
+public class MainActivity extends BeamBaseActivity<MainPresenter> {
 
     @InjectView(R.id.container)
     FrameLayout container;
@@ -57,7 +58,7 @@ public class MainActivity extends BaseActivity<MainPresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        setSwipeBackEnable(false);
+        SwipeBackHelper.getCurrentPage(this).setSwipeBackEnable(false);
         UmengUpdateAgent.forceUpdate(this);
         ButterKnife.inject(this);
         date.setOnClickListener(v -> getPresenter().showDateFragment());

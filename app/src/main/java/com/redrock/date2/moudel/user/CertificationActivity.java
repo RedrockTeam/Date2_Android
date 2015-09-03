@@ -6,9 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
 
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,7 +17,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/11.
  */
 @RequiresPresenter(CertificationPresenter.class)
-public class CertificationActivity extends BaseActivity<CertificationPresenter> {
+public class CertificationActivity extends BeamBaseActivity<CertificationPresenter> {
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;

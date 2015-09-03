@@ -2,7 +2,7 @@ package com.redrock.date2.moudel.user;
 
 import android.os.Bundle;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.expansion.list.BeamListActivityPresenter;
 import com.redrock.date2.model.UserModel;
 import com.redrock.date2.model.bean.User;
 import com.redrock.date2.model.callback.DataCallback;
@@ -10,24 +10,28 @@ import com.redrock.date2.model.callback.DataCallback;
 /**
  * Created by Mr.Jude on 2015/8/11.
  */
-public class AttentionPresenter extends Presenter<AttentionActivity> {
+public class AttentionPresenter extends BeamListActivityPresenter<AttentionActivity,User> {
     private String id;
-    private User[] users;
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(AttentionActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         id = getView().getIntent().getStringExtra("id");
-        UserModel.getInstance().getAttention("0", new DataCallback<User[]>() {
-            @Override
-            public void success(String info, User[] data) {
-                getView().addData(users = data);
-            }
-        });
+        onRefresh();
     }
 
     @Override
-    protected void onCreateView(AttentionActivity view) {
-        super.onCreateView(view);
-        if (users!=null)getView().addData(users);
+    public void onRefresh() {
+        UserModel.getInstance().getAttention("0", new DataCallback<User[]>() {
+            @Override
+            public void success(String info, User[] data) {
+                getAdapter().clear();
+                getAdapter().addAll(data);
+            }
+
+            @Override
+            public void error(String s) {
+                getView().showError();
+            }
+        });
     }
 }

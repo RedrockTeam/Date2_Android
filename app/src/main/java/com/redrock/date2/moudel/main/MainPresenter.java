@@ -2,7 +2,7 @@ package com.redrock.date2.moudel.main;
 
 import android.content.Intent;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.bijection.Presenter;
 import com.redrock.date2.moudel.action.ActionFragment;
 import com.redrock.date2.moudel.date.DateFragment;
 import com.redrock.date2.moudel.date.WriteDateActivity;

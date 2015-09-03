@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
-import com.jude.beam.nucleus.view.NucleusFragment;
+import com.jude.beam.bijection.BeamFragment;
+import com.jude.beam.bijection.RequiresPresenter;
 import com.redrock.date2.R;
 import com.redrock.date2.model.DateModel;
 
@@ -28,7 +28,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/7.
  */
 @RequiresPresenter(DatePresenter.class)
-public class DateFragment extends NucleusFragment<DatePresenter> {
+public class DateFragment extends BeamFragment<DatePresenter> {
     @InjectView(R.id.tabs)
     PagerSlidingTabStrip tabs;
     @InjectView(R.id.vp_date)

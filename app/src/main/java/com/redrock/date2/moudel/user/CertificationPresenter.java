@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.jude.beam.nucleus.manager.Presenter;
+import com.jude.beam.bijection.Presenter;
 import com.jude.library.imageprovider.ImageProvider;
 import com.jude.library.imageprovider.OnImageSelectListener;
 
@@ -15,8 +15,8 @@ public class CertificationPresenter extends Presenter<CertificationActivity> {
     private ImageProvider mProvider;
 
     @Override
-    protected void onCreate(Bundle savedState) {
-        super.onCreate(savedState);
+    protected void onCreate(CertificationActivity view,Bundle savedState) {
+        super.onCreate(view,savedState);
         mProvider = new ImageProvider(getView());
     }
 

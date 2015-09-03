@@ -10,10 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
-import com.jude.utils.JUtils;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.data.BeamDataActivity;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
+import com.redrock.date2.model.UserModel;
 import com.redrock.date2.model.bean.UserDetail;
 
 import butterknife.ButterKnife;
@@ -23,7 +23,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/9.
  */
 @RequiresPresenter(UserDetailPresenter.class)
-public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
+public class UserDetailActivity extends BeamDataActivity<UserDetailPresenter,UserDetail> {
 
     @InjectView(R.id.face)
     SimpleDraweeView face;
@@ -75,7 +75,8 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         viewCollection.setOnClickListener(v -> getPresenter().startCollection());
     }
 
-    public void setUserDetail(UserDetail userDetail) {
+    @Override
+    public void setData(UserDetail userDetail) {
         if (userDetail.getFace() != null)
             face.setImageURI(Uri.parse(userDetail.getFace()));
         name.setText(userDetail.getName());
@@ -88,7 +89,9 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
         charmValue.setText(userDetail.getCharmValue());
         gender.setImageResource(userDetail.getGender() == 1 ? R.drawable.ic_male_focus : R.drawable.ic_male_unfocus);
         age.setText(userDetail.getAge() + "级");
+        setIsUser(userDetail.getId().equals(UserModel.getInstance().getAccount().getId()));
     }
+
 
 
     public void setIsUser(boolean isUser){
@@ -98,7 +101,6 @@ public class UserDetailActivity extends BaseActivity<UserDetailPresenter> {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        JUtils.Log("onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_edit,menu);
         return isUser;
     }

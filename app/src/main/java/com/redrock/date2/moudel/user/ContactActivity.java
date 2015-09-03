@@ -5,10 +5,10 @@ import android.text.InputType;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,7 +17,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/11.
  */
 @RequiresPresenter(ContactPresenter.class)
-public class ContactActivity extends BaseActivity<ContactPresenter> {
+public class ContactActivity extends BeamBaseActivity<ContactPresenter> {
 
     @InjectView(R.id.tv_phone)
     TextView tvPhone;

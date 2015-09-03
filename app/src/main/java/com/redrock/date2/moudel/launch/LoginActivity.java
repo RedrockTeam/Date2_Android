@@ -6,10 +6,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.model.bean.Account;
 
 import butterknife.ButterKnife;
@@ -19,7 +19,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/13.
  */
 @RequiresPresenter(LoginPresenter.class)
-public class LoginActivity extends BaseActivity<LoginPresenter> {
+public class LoginActivity extends BeamBaseActivity<LoginPresenter> {
 
     @InjectView(R.id.login)
     Button login;

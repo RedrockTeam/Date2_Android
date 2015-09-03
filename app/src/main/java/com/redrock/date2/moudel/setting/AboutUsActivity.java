@@ -3,10 +3,10 @@ package com.redrock.date2.moudel.setting;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -16,7 +16,7 @@ import butterknife.InjectView;
  */
 
 @RequiresPresenter(AboutUsPresenter.class)
-public class AboutUsActivity extends BaseActivity<AboutUsPresenter> {
+public class AboutUsActivity extends BeamBaseActivity<AboutUsPresenter> {
 
     @InjectView(R.id.version)
     TextView version;

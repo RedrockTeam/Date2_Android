@@ -1,46 +1,26 @@
 package com.redrock.date2.moudel.action;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import com.jude.beam.nucleus.factory.RequiresPresenter;
-import com.jude.beam.nucleus.view.NucleusFragment;
-import com.jude.easyrecyclerview.EasyRecyclerView;
-import com.redrock.date2.R;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.list.BeamListFragment;
+import com.jude.beam.expansion.list.ListConfig;
+import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.redrock.date2.model.bean.Action;
 
 /**
  * Created by Mr.Jude on 2015/8/7.
  */
 @RequiresPresenter(ActionPresenter.class)
-public class ActionFragment extends NucleusFragment<ActionPresenter> {
-    private EasyRecyclerView mRecyclerView;
-    private ActionAdapter mAdapter;
-    @Nullable
+public class ActionFragment extends BeamListFragment<ActionPresenter,Action> {
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.include_recyclerview,container,false);
-        mRecyclerView = (EasyRecyclerView) view.findViewById(R.id.recyclerview);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapterWithProgress(mAdapter = new ActionAdapter(getActivity()));
-        mRecyclerView.setRefreshListener(() -> getPresenter().refresh());
-        mAdapter.setMore(R.layout.view_list_more, () -> getPresenter().loadMore());
-        return view;
+    protected BaseViewHolder getViewHolder(ViewGroup viewGroup, int i) {
+        return new ActionViewHolder(viewGroup);
     }
 
-    public void stopRefresh(){
-        mAdapter.clear();
-    }
-
-    public void addDate(Action[] actions){
-        mAdapter.addAll(actions);
-    }
-
-    public void stopLoadMore(){
-        mAdapter.stopMore();
+    @Override
+    protected ListConfig getConfig() {
+        return super.getConfig().setRefreshAble(true).setLoadmoreAble(true).setErrorTouchToResumeAble(true);
     }
 }

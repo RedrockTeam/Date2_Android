@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.model.bean.UserDetail;
 
 import butterknife.ButterKnife;
@@ -22,7 +22,7 @@ import butterknife.InjectView;
  * Created by Mr.Jude on 2015/8/15.
  */
 @RequiresPresenter(UserEditPresenter.class)
-public class UserEditActivity extends BaseActivity<UserEditPresenter> {
+public class UserEditActivity extends BeamBaseActivity<UserEditPresenter> {
 
     @InjectView(R.id.face)
     SimpleDraweeView face;

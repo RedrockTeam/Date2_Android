@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 import com.redrock.date2.config.Constant;
 
 import butterknife.ButterKnife;
@@ -17,7 +17,7 @@ import cn.bingoogolapple.flowlayout.BGAFlowLayout;
  * Created by Mr.Jude on 2015/8/14.
  */
 @RequiresPresenter(FiltratePresenter.class)
-public class FiltrateActivity extends BaseActivity<FiltratePresenter> {
+public class FiltrateActivity extends BeamBaseActivity<FiltratePresenter> {
     @InjectView(R.id.sort_style)
     BGAFlowLayout sortStyle;
     @InjectView(R.id.sort_user)

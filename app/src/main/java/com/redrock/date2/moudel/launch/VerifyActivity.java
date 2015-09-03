@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.jude.beam.nucleus.factory.RequiresPresenter;
+import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.beam.expansion.BeamBaseActivity;
 import com.jude.utils.JUtils;
 import com.redrock.date2.R;
-import com.redrock.date2.app.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,7 +17,7 @@ import cn.smssdk.gui.TimeListener;
  * Created by Mr.Jude on 2015/8/13.
  */
 @RequiresPresenter(VerifyPresenter.class)
-public class VerifyActivity extends BaseActivity<VerifyPresenter> implements TimeListener {
+public class VerifyActivity extends BeamBaseActivity<VerifyPresenter> implements TimeListener {
 
     @InjectView(R.id.re_code)
     Button reCode;
