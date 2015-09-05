@@ -107,7 +107,7 @@ public class WriteDateActivity extends BeamBaseActivity<WriteDatePresenter> {
                 .title("输入标题")
                 .inputType(InputType.TYPE_CLASS_TEXT)
                 .inputMaxLength(30)
-                .input("", tvTitle.getText(), new MaterialDialog.InputCallback() {
+                .input("", getPresenter().getData().getTitle(), new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         if (input.toString().trim().isEmpty()) {
@@ -125,7 +125,7 @@ public class WriteDateActivity extends BeamBaseActivity<WriteDatePresenter> {
                 .title("输入约会人数")
                 .inputMaxLength(2)
                 .inputType(InputType.TYPE_CLASS_NUMBER)
-                .input("", tvMemberCount.getText(), new MaterialDialog.InputCallback() {
+                .input("", getPresenter().getData().getMemberCount()+"", new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         try {
@@ -142,7 +142,7 @@ public class WriteDateActivity extends BeamBaseActivity<WriteDatePresenter> {
         new MaterialDialog.Builder(this)
                 .title("请选择消费方式")
                 .items(Constant.COST_TYPE)
-                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                .itemsCallbackSingleChoice(getPresenter().getData().getCostType(), new MaterialDialog.ListCallbackSingleChoice() {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
                         tvCost.setText(text);
@@ -186,7 +186,7 @@ public class WriteDateActivity extends BeamBaseActivity<WriteDatePresenter> {
         new MaterialDialog.Builder(this)
                 .title("输入约会地点")
                 .inputType(InputType.TYPE_CLASS_TEXT)
-                .input("", tvAddress.getText(), new MaterialDialog.InputCallback() {
+                .input("", getPresenter().getData().getAddress(), new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         if (input.toString().trim().isEmpty()) {
@@ -203,7 +203,7 @@ public class WriteDateActivity extends BeamBaseActivity<WriteDatePresenter> {
         new MaterialDialog.Builder(this)
                 .title("选择性别要求")
                 .items(Constant.GENDER_TYPE)
-                .itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                .itemsCallbackSingleChoice(getPresenter().getData().getGender(), new MaterialDialog.ListCallbackSingleChoice() {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
                         tvGender.setText(text);
@@ -219,7 +219,7 @@ public class WriteDateActivity extends BeamBaseActivity<WriteDatePresenter> {
         new MaterialDialog.Builder(this)
                 .title("输入备注")
                 .inputType(InputType.TYPE_CLASS_TEXT)
-                .input("", tvContent.getText(), new MaterialDialog.InputCallback() {
+                .input("", getPresenter().getData().getContent(), new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(MaterialDialog dialog, CharSequence input) {
                         tvContent.setText(input);

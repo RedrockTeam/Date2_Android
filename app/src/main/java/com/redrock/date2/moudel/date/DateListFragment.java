@@ -6,6 +6,7 @@ import com.jude.beam.bijection.RequiresPresenter;
 import com.jude.beam.expansion.list.BeamListFragment;
 import com.jude.beam.expansion.list.ListConfig;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
+import com.redrock.date2.R;
 import com.redrock.date2.model.bean.Date;
 
 /**
@@ -13,7 +14,10 @@ import com.redrock.date2.model.bean.Date;
  */
 @RequiresPresenter(DateListPresenter.class)
 public class DateListFragment extends BeamListFragment<DateListPresenter,Date> {
-
+    @Override
+    public int getLayout() {
+        return R.layout.include_recyclerview;
+    }
 
     @Override
     protected BaseViewHolder getViewHolder(ViewGroup viewGroup, int i) {
@@ -22,6 +26,6 @@ public class DateListFragment extends BeamListFragment<DateListPresenter,Date> {
 
     @Override
     protected ListConfig getConfig() {
-        return super.getConfig().setRefreshAble(true).setLoadmoreAble(true).setErrorTouchToResumeAble(true);
+        return super.getConfig().setLoadmoreAble(true);
     }
 }

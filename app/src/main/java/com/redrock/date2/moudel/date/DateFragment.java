@@ -18,8 +18,10 @@ import android.view.ViewGroup;
 import com.astuetz.PagerSlidingTabStrip;
 import com.jude.beam.bijection.BeamFragment;
 import com.jude.beam.bijection.RequiresPresenter;
+import com.jude.utils.JUtils;
 import com.redrock.date2.R;
 import com.redrock.date2.model.DateModel;
+import com.redrock.date2.model.bean.DateType;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -44,7 +46,9 @@ public class DateFragment extends BeamFragment<DatePresenter> {
         setHasOptionsMenu(true);
         View rootView = inflater.inflate(R.layout.date_fragment, container, false);
         ButterKnife.inject(this, rootView);
-        setAdapter(mAdapter = new DateFragmentListAdapter(getChildFragmentManager()));
+
+        DateModel.getInstance().registerDateTypeFather(v -> setAdapter(mAdapter = new DateFragmentListAdapter(getChildFragmentManager(), v)));
+
         vpDate.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -99,30 +103,39 @@ public class DateFragment extends BeamFragment<DatePresenter> {
     }
 
     class DateFragmentListAdapter extends FragmentPagerAdapter {
-
-        public DateFragmentListAdapter(FragmentManager fm) {
+        private DateType[] dateTypes;
+        public DateFragmentListAdapter(FragmentManager fm,DateType[] dateTypes) {
             super(fm);
+            this.dateTypes = dateTypes;
+            if (this.dateTypes==null)this.dateTypes = new DateType[0];
         }
 
         @Override
         public Fragment getItem(int position) {
+            JUtils.Log("position:"+position);
             Fragment f =  new DateListFragment();
             Bundle b = new Bundle();
             if (position == 0)b.putInt("id",0);
-            else b.putInt("id",DateModel.getInstance().getDateTypeFather()[position-1].getId());
+            else b.putInt("id", dateTypes[position - 1].getId());
             f.setArguments(b);
             return f;
         }
 
         @Override
         public int getCount() {
-            return DateModel.getInstance().getDateTypeFather().length+1;
+            JUtils.Log("length:"+(DateModel.getInstance().getDateTypeFather().length+1));
+            return dateTypes.length+1;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             if (position == 0)return "热门";
-            else return DateModel.getInstance().getDateTypeFather()[position-1].getName();
+            else return dateTypes[position-1].getName();
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
         }
     }
 }

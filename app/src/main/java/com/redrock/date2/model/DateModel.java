@@ -25,6 +25,10 @@ import com.redrock.date2.model.callback.StatusCallback;
 
 import java.util.Random;
 
+import rx.Subscription;
+import rx.functions.Action1;
+import rx.subjects.BehaviorSubject;
+
 /**
  * Created by Mr.Jude on 2015/8/8.
  */
@@ -35,15 +39,28 @@ public class DateModel extends AbsModel {
     public static final String FILTRATE_USER = "filtrate_user";
     public static final String FILTRATE_TIME = "filtrate_time";
     public static final String FILTRATE_COST = "filtrate_cost";
+
     private DateTypeFather[] mDateType;
+    private BehaviorSubject<DateTypeFather[]> mDateTypeSubject;
     public static DateModel getInstance() {
         return getInstance(DateModel.class);
     }
 
     @Override
+    protected void onAppCreate(Context ctx) {
+        super.onAppCreate(ctx);
+        mDateType = (DateTypeFather[]) JFileManager.getInstance().getFolder(Dir.Object).readObjectFromFile(DATE_TYPE_FILE);
+        mDateTypeSubject = BehaviorSubject.create();
+        mDateTypeSubject.onNext(mDateType);
+    }
+
+    @Override
     protected void onAppCreateOnBackThread(Context ctx) {
         updateDateType();
-        mDateType = (DateTypeFather[]) JFileManager.getInstance().getFolder(Dir.Object).readObjectFromFile(DATE_TYPE_FILE);
+    }
+
+    public Subscription registerDateTypeFather(Action1<DateTypeFather[]> action1){
+        return mDateTypeSubject.subscribe(action1);
     }
 
     public void getBanner(DataCallback<Banner[]> callback){
@@ -82,8 +99,11 @@ public class DateModel extends AbsModel {
     }
 
     public void setDateType(DateTypeFather[] types){
-        mDateType = types;
         JFileManager.getInstance().getFolder(Dir.Object).writeObjectToFile(types, DATE_TYPE_FILE);
+        mDateType = types;
+        if (mDateType!=null)
+        mDateTypeSubject.onNext(types);
+        JUtils.Log("save Type" + types.length);
     }
 
 
@@ -92,9 +112,6 @@ public class DateModel extends AbsModel {
             @Override
             public void success(String info, DateTypeFather[] data) {
                 setDateType(data);
-                for (DateTypeFather dateTypeFather : data) {
-                    JUtils.Log(dateTypeFather.getName());
-                }
             }
         });
     }

@@ -3,6 +3,8 @@ package com.redrock.date2.moudel.date;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.jude.beam.bijection.RequiresPresenter;
 import com.jude.beam.expansion.BeamBaseActivity;
@@ -28,6 +30,8 @@ public class FiltrateActivity extends BeamBaseActivity<FiltratePresenter> {
     BGAFlowLayout sortTime;
     @InjectView(R.id.sort_type)
     BGAFlowLayout sortType;
+    @InjectView(R.id.sort_type_text)
+    TextView sortTypeText;
 
     private BRViewAdapter mTypeAdapter;
     private BRViewAdapter mStyleAdapter;
@@ -40,7 +44,13 @@ public class FiltrateActivity extends BeamBaseActivity<FiltratePresenter> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_activity_filtrate);
         ButterKnife.inject(this);
+
+        if(getPresenter().getDateType().length==0){
+            sortTypeText.setVisibility(View.GONE);
+            sortType.setVisibility(View.GONE);
+        }
         mTypeAdapter = new BRViewAdapter(this, sortType, getPresenter().getDateType(), index -> getPresenter().setType(index));
+
         mStyleAdapter = new BRViewAdapter(this, sortStyle, Constant.SORT_STYLE, index -> getPresenter().setStyle(index));
         mUserAdapter = new BRViewAdapter(this, sortUser, Constant.SORT_USER, index -> getPresenter().setUser(index));
         mCostAdapter = new BRViewAdapter(this, sortCost, Constant.SORT_COST, index -> getPresenter().setCost(index));
@@ -54,6 +64,7 @@ public class FiltrateActivity extends BeamBaseActivity<FiltratePresenter> {
     public void setSortUser(int index) {
         mUserAdapter.setFocusIndex(index);
     }
+
     public void setSortType(int index) {
         mTypeAdapter.setFocusIndex(index);
     }

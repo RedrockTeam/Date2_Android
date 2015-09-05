@@ -59,6 +59,10 @@ public class WriteDatePresenter extends Presenter<WriteDateActivity> {
         mData.setSchool(school);
     }
 
+    public DateEdit getData(){
+        return mData;
+    }
+
     public void publish(){
         if (mData.getTitle() == null || mData.getTitle().trim().isEmpty()){
             JUtils.Toast("请输入标题");

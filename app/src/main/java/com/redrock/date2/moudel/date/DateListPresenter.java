@@ -46,7 +46,7 @@ public class DateListPresenter extends BeamListFragmentPresenter<DateListFragmen
         getAdapter().addHeader(new RecyclerArrayAdapter.ItemView() {
             @Override
             public View onCreateView(ViewGroup viewGroup) {
-                View view = LayoutInflater.from(getView().getActivity()).inflate(R.layout.date_banner, viewGroup, false);
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.date_banner, viewGroup, false);
                 RollPagerView vp = (RollPagerView) view.findViewById(R.id.view_pager);
                 vp.setAdapter(new BannerAdapter());
 
@@ -62,7 +62,7 @@ public class DateListPresenter extends BeamListFragmentPresenter<DateListFragmen
 
                 @Override
                 public View getView(ViewGroup viewGroup, int i) {
-                    SimpleDraweeView image = new SimpleDraweeView(DateListPresenter.this.getView().getActivity());
+                    SimpleDraweeView image = new SimpleDraweeView(viewGroup.getContext());
                     RoundingParams params = RoundingParams.fromCornersRadius(JUtils.dip2px(2));
                     image.getHierarchy().setRoundingParams(params);
                     image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -76,6 +76,7 @@ public class DateListPresenter extends BeamListFragmentPresenter<DateListFragmen
                 }
             }
         });
+        getAdapter().notifyDataSetChanged();
     }
 
     @Override
